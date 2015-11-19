@@ -9,9 +9,8 @@
 
 (assert-not 
   (par (a b)
-    (forall ((m (Maybe a)) (m)))
-      (= (fmap id m) (id m))
-  ))
+    (forall ((m (Maybe a)) (m))
+      (= (fmap id m) (id m)))))
 
 
 

@@ -2,10 +2,10 @@
   ((Maybe (Nothing) (Just (lol a)))))
 
 (define-funs-rec
-  ((par (a b) (fmap ((f (=> a b)) (m (Maybe a)) (Maybe b)))
+  ((par (a b) (fmap ((f (=> a b)) (m (Maybe a))) (Maybe b))))
   ((match m
     (case Nothing Nothing)
-    (case (Just a) (Just (@ f a))))))))
+    (case (Just a) (Just (@ f a))))))
 
 (assert-not 
   (par (a b)

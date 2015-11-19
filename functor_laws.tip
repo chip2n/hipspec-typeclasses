@@ -18,12 +18,11 @@
 
 
 
-instance Functor Maybe where
-  fmap :: (a -> b) -> Maybe a -> Maybe b
-  fmap _ Nothing  = Nothing
-  fmap f (Just a) = Just (f a)
-
-laws:
-  fmap id = id
-  fmap (p . q) = (fmap p) . (fmap q)
-
+; instance Functor Maybe where
+;   fmap :: (a -> b) -> Maybe a -> Maybe b
+;   fmap _ Nothing  = Nothing
+;   fmap f (Just a) = Just (f a)
+; 
+; laws:
+;   fmap id = id
+;   fmap (p . q) = (fmap p) . (fmap q)

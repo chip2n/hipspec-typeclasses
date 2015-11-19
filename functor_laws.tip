@@ -1,0 +1,29 @@
+(declare-datatypes (a)
+  ((Maybe (Nothing) (Just (lol a)))))
+
+(define-funs-rec
+  ((par (a b) (fmap ((f (=> a b)) (m (Maybe a)) (Maybe b)))
+  ((match m
+    (case Nothing Nothing)
+    (case (Just a) (Just (@ f a))))))))
+
+(assert-not 
+  (par (a b)
+    (forall ((m (Maybe a)) (m)))
+      (= (fmap id m) (id m))
+  ))
+
+
+
+
+
+
+instance Functor Maybe where
+  fmap :: (a -> b) -> Maybe a -> Maybe b
+  fmap _ Nothing  = Nothing
+  fmap f (Just a) = Just (f a)
+
+laws:
+  fmap id = id
+  fmap (p . q) = (fmap p) . (fmap q)
+

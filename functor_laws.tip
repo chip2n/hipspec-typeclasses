@@ -7,6 +7,11 @@
     (case Nothing Nothing)
     (case (Just a) (Just (@ f a))))))
 
+(define-funs-rec
+  (par (a) (id (x a) (a))
+  (x)
+)
+
 (assert-not 
   (par (a b)
     (forall ((m (Maybe a)) (m))

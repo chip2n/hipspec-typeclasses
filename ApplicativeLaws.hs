@@ -19,11 +19,12 @@ Nothing <*> m = Nothing
 applicativeIdentity :: Maybe a -> Equality (Maybe a)
 applicativeIdentity v = pure P.id <*> v === v
 
--- applicativeComposition :: (Maybe a) -> (Maybe b) -> (Maybe c) -> Equality (Maybe c)
+applicativeComposition :: (Maybe (b -> a)) -> (Maybe (c -> b)) -> (Maybe c)
+                            -> Equality (Maybe a)
 applicativeComposition u v w = pure (P..) <*> u <*> v <*> w === u <*> (v <*> w)
 
--- applicativeHomomorphism :: (a -> b) -> a -> Equality (Maybe b)
+applicativeHomomorphism :: (a -> b) -> a -> Equality (Maybe b)
 applicativeHomomorphism f x = pure f <*> pure x === pure (f x)
 
--- Type goes here
+applicativeInterchange :: Maybe (a -> b) -> a -> Equality (Maybe b)
 applicativeInterchange u y = u <*> pure y === pure (P.$ y) <*> u

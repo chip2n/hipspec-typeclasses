@@ -14,5 +14,9 @@ return = Just
 
 lawLeftIdentity :: a -> (a -> Maybe b) -> Equality (Maybe b)
 lawLeftIdentity a f    = (return a >>= f) === f a
+
+lawRightIdentity :: Maybe a -> Equality (Maybe a)
 lawRightIdentity m     = (m >>= return)   === m
+
+lawAssociativity :: (a -> Maybe b) -> (b -> Maybe c) -> Maybe a -> Equality (Maybe c)
 lawAssociativity f g m = (m >>= f) >>= g  === m >>= (\x -> f x >>= g)

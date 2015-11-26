@@ -1,4 +1,4 @@
-module Maybe where
+module FunctorLaws where
 
 import Tip
 import qualified Prelude as P

@@ -1,4 +1,4 @@
-module MonadTransformerLaws where
+module Law.MonadTransformer where
 
 import Tip
 import qualified Control.Monad as CM

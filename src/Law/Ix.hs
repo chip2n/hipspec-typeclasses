@@ -1,6 +1,6 @@
 {-# LANGUAGE TypeOperators #-}
 
-module IxLaws where
+module Law.Ix where
 
 import Tip
 import Data.Ix

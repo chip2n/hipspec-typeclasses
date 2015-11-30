@@ -1,4 +1,4 @@
-module ApplicativeLaws where
+module Law.Applicative where
 
 import Tip
 import qualified Prelude as P

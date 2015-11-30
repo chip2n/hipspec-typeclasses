@@ -1,4 +1,4 @@
-module NumLaws where
+module Law.Num where
 
 import Tip
 

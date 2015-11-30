@@ -3,3 +3,4 @@ cabal.sandbox.config
 **/*.hi
 **/*.dyn_hi
 **/*.dyn_o
+dist/

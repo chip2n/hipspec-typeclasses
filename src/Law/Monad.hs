@@ -1,4 +1,4 @@
-module MonadLaws where
+module Law.Monad where
 
 import Tip
 import qualified Prelude

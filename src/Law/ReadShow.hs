@@ -1,4 +1,4 @@
-module ReadShowLaws where
+module Law.ReadShow where
 
 import Tip
 

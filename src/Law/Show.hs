@@ -1,4 +1,4 @@
-module ShowLaws where
+module Law.Show where
 
 import Tip
 

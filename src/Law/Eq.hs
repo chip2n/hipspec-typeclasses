@@ -1,6 +1,6 @@
 {-# LANGUAGE TypeOperators #-}
 
-module EqLaws where
+module Law.Eq where
 
 import Tip
 
@@ -9,13 +9,13 @@ import Tip
 reflexivityLaw :: Eq a => a -> Equality Bool 
 reflexivityLaw a = bool (a == a)
 
--- |Equality is symmetric (a == b iff b == a)
-symmetryLaw :: Eq a => a -> a -> And (Bool :=>: Bool) (Bool :=>: Bool)
-symmetryLaw a b = ((a == b) ==> (b == a)) .&&. ((b == a) ==> (a == b))
+-- |Equality is symmetric (a == b if b == a)
+symmetryLaw :: Eq a => a -> a -> Equality Bool :=>: Equality Bool
+symmetryLaw a b = bool (a == b) ==> bool (b == a)
 
 -- |Equality is transitive (if a <= b and b <= c, then a <= c)
-transitivityLaw :: Eq a => a -> a -> a -> And Bool Bool :=>: Bool
-transitivityLaw a b c = (a == b .&&. b == c) ==> a == c
+transitivityLaw :: Eq a => a -> a -> a -> Equality Bool :=>: Equality Bool
+transitivityLaw a b c = bool (a == b && b == c) ==> bool (a == c)
 
 -- NOTE: If instance of Eq is structural, substitution law holds
 -- (if a == b then f a == f b for all f)

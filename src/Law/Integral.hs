@@ -1,4 +1,4 @@
-module IntegralLaws where
+module Law.Integral where
 
 import Tip
 

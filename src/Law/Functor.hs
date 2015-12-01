@@ -1,4 +1,4 @@
-module FunctorLaws where
+module Law.Functor where
 
 import Tip
 import qualified Prelude as P

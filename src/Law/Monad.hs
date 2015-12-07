@@ -2,6 +2,7 @@ module Law.Monad where
 
 import Tip
 import qualified Prelude
+-- import Prelude (Maybe(..), (>>=), return)
 
 data Maybe a = Just a | Nothing
 
@@ -19,4 +20,4 @@ lawRightIdentity :: Maybe a -> Equality (Maybe a)
 lawRightIdentity m     = (m >>= return)   === m
 
 lawAssociativity :: (a -> Maybe b) -> (b -> Maybe c) -> Maybe a -> Equality (Maybe c)
-lawAssociativity f g m = (m >>= f) >>= g  === m >>= (\x -> f x >>= g)
+lawAssociativity f g m = ((m >>= f) >>= g) === (m >>= (\x -> f x >>= g))

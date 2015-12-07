@@ -3,19 +3,18 @@
 module Example.Eq where
 
 import Tip
-import Prelude (Bool(..), (&&))
+--import Prelude (Bool(..), (&&))
 
 data Test = Low | Middle | High
 
-{-
 instance Eq Test where
     Low    == Low    = True
     Middle == Middle = True
     High   == High   = True
     _      == _      = False
--}
 
 -- Equality definition without wildcards
+{-
 (==) :: Test -> Test -> Bool
 Low    == Low    = True
 Low    == Middle = False
@@ -26,6 +25,7 @@ Middle == High   = False
 High   == Low    = False
 High   == Middle = False
 High   == High   = True
+-}
 
 {-
 (==) :: Test -> Test -> Bool

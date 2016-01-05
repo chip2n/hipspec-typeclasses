@@ -1,4 +1,4 @@
-module Example.SimpleEq2 where
+module Example.Simple3 where
 
 import Tip
 

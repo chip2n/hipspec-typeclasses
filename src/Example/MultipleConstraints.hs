@@ -1,4 +1,4 @@
-module Example.Simple where
+module Example.MultipleConstraints where
 
 import Tip
 
@@ -7,11 +7,17 @@ data Test = Foo
 class Magic z where
   sorcery :: z -> z -> Bool
 
+class Witchcraft y where
+  boom :: y -> y -> Bool
+
 instance Magic Test where
   sorcery Foo Foo = True
 
-law :: Magic q => q -> Equality Bool
-law b = bool (sorcery b b)
+instance Witchcraft Test where
+  boom Foo Foo = False
+
+law :: (Magic q, Witchcraft q) => q -> Equality Bool
+law b = bool (sorcery b b && boom b b)
 
 --law2 :: Test -> Equality Bool
 --law2 c = bool (sorcery c c)

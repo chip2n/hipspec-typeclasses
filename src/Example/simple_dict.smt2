@@ -1,18 +1,13 @@
+(declare-datatypes () ((Test (Foo))))
 (declare-datatypes (a)
-  ((Magic (sorcery (lol (=> a (=> a Bool)))))))
-
-(declare-datatypes () ((Test (Test))))
-
+  ((Magic (Mgc (lol (=> a (=> a Bool)))))))
 (define-fun
-  cMagicTestSorcery
-    ((dict (Magic Test)) (a Test) (b Test)) Bool
-    (match a
-      (case Test
-        (match b
-          (case Test true)))))
-
+  (par (z)
+    (sorcery
+       () (=> (Magic z) (=> z (=> z Bool)))
+       (lambda ((x (Magic z))) (match x (case (Mgc x2) x2))))))
 (assert-not
-  (forall ((dict (Magic a)) (b a))
-    ((lol dict) a a)))
-
+  (par (z)
+    (forall ((d (Magic z)) (b z))
+      (@ (@ (@ (as sorcery (=> (Magic z) (=> z (=> z Bool)))) d) b) b))))
 (check-sat)

@@ -5,7 +5,7 @@ function emnaRunFile {
   local status=$?
 
   if [ $status -ne 0 ]; then
-    echo -e -n "\033[0;31mERROR: $@"
+    echo -e -n "\033[0;31mFAILURE: $@"
   else
     case "$output" in
       *Finished* ) echo -e -n "\033[0;32mSUCCESS: $@";;

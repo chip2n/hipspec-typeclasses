@@ -16,6 +16,6 @@ instance Semiring Nat where
   mul n Zero = Zero
   mul n (Succ m) = add n $ mul n m
 
-addTransitivity :: Semiring a => a -> a -> a -> Equality a
-addTransitivity a b c = add (add a b) c === add a (add b c)
+addAssociativity :: Semiring a => a -> a -> a -> Equality a
+addAssociativity a b c = add (add a b) c === add a (add b c)
 

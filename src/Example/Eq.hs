@@ -12,11 +12,3 @@ instance Eq Test where
     High   == High   = True
     _      == _      = False
 
---reflexivityLaw :: Eq a => a -> Equality Bool
---reflexivityLaw a = bool (a == a)
---
---symmetryLaw :: Eq a => a -> a -> Equality Bool :=>: Equality Bool
---symmetryLaw a b = bool (a == b) ==> bool (b == a)
---
---transitivityLaw :: Eq a => a -> a -> a -> Equality Bool :=>: Equality Bool
---transitivityLaw a b c = bool (a == b && b == c) ==> bool (a == c)

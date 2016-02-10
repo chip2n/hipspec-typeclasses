@@ -18,7 +18,7 @@ function printWarning {
 }
 
 function emnaRunFile {
-  output=$(emna "$1" 2> /dev/null)
+  output=$(emna -v=2 "$1" 2> /dev/null)
   local status=$?
   local returnVal=0
 
@@ -28,7 +28,7 @@ function emnaRunFile {
     returnVal=1
   else
     # Correct proof prints "Finished!"
-    # If not this is s case we may need to handle differently
+    # If not this is a case we may need to handle differently
     case "$output" in
       *Finished* )
         printSuccess $1

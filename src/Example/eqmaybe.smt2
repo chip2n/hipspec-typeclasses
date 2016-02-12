@@ -23,4 +23,9 @@
   (forall ((a (Maybe Eq)) (b (Maybe Eq)) (c (Maybe Eq)))
     (=> (and (EqMaybefunc a b) (EqMaybefunc b c)) (EqMaybefunc a c))))
 (assert (forall ((b Eq)) (Eqfunc b b)))
+(assert
+  (forall ((a (Eq)) (b (Eq))) (=> (Eqfunc a b) (Eqfunc b a))))
+(assert
+  (forall ((a (Eq)) (b (Eq)) (c (Eq)))
+    (=> (and (Eqfunc a b) (Eqfunc b c)) (Eqfunc a c))))
 (check-sat)

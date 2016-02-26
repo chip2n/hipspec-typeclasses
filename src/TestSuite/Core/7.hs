@@ -9,5 +9,5 @@ instance Eq (Baz a) where
   (==)  Bar     Bar    = True
   (==)  _       _      = False
 
-law :: Eq a => a -> a -> Equality Bool
-law a b = bool (a == b)
+--law :: Eq a => a -> a -> Equality Bool
+--law a b = bool (a == b)

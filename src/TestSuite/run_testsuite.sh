@@ -18,7 +18,7 @@ function printWarning {
 }
 
 function emnaRunFile {
-  output=$(emna -v=2 "$1" 2> /dev/null)
+  output=$(emna -p=z -v=2 --law-dir ../../../tools/tip-haskell-frontend/src/Tip/Law "$1" 2> /dev/null)
   local status=$?
   local returnVal=0
 

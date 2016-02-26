@@ -14,7 +14,7 @@ instance Magic Test where
   sorcery Foo Foo = True
 
 instance Witchcraft Test where
-  boom Foo Foo = False
+  boom Foo Foo = True
 
 law :: (Magic q, Witchcraft q) => q -> Equality Bool
 law b = bool (sorcery b b && boom b b)

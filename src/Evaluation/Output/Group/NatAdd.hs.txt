@@ -1,0 +1,3 @@
+
+Group/NatAdd.hs:5:27: Not in scope: type constructor or class ‘Nat’
+

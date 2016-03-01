@@ -1,0 +1,3 @@
+op: Cast expression: tpl_B1
+`cast` (NTCo:Semigroup[0] <a>_N :: Semigroup a ~R# (a -> a -> a))
+

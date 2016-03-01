@@ -1,0 +1,63 @@
+== Signature ==
+ Cons :: a -> List a -> List a
+Empty :: List a
+
+== Laws ==
+
+== Statistics ==
+66 events created in total (7 schemas, 13 terms, 33 creation, 13 miscellaneous), 16 hooks.
+31 schema test cases for 7 representative schemas.
+21 term test cases for 13 representative terms.
+0 equal schemas and 0 equal terms generated.
+11 pruning equations.
+
+== Signature ==
+             Cons :: a -> List a -> List a
+            Empty :: List a
+monoidListmappend :: List a -> List a -> List a
+
+== Laws ==
+monoidListmappend x Empty = x
+monoidListmappend Empty x = x
+monoidListmappend (Cons x y) z = Cons x (monoidListmappend y z)
+monoidListmappend (monoidListmappend x y) z =
+  monoidListmappend x (monoidListmappend y z)
+
+== Statistics ==
+310 events created in total (22 schemas, 63 terms, 184 creation, 41 miscellaneous), 17 hooks.
+86 schema test cases for 18 representative schemas.
+214 term test cases for 59 representative terms.
+4 equal schemas and 4 equal terms generated.
+30 pruning equations.
+
+Considering:
+  MonoidListmappend xs (MonoidListmappend ys zs) = MonoidListmappend (MonoidListmappend xs ys) zs
+Proved by induction on xs, ys
+Considering:
+  MonoidListmappend Empty xs = xs
+Proved without using induction
+Considering:
+  MonoidListmappend xs Empty = xs
+Proved by induction on xs
+Considering:
+  MonoidListmappend xs Empty = xs
+Proved without using induction
+Considering:
+  MonoidListmappend Empty xs = xs
+Proved without using induction
+Considering:
+  MonoidListmappend (Cons y xs) ys = Cons y (MonoidListmappend xs ys)
+Proved without using induction
+Considering:
+  MonoidListmappend (MonoidListmappend xs ys) zs = MonoidListmappend xs (MonoidListmappend ys zs)
+Proved without using induction
+Finished!
+
+Summary:
+ 0: MonoidListmappend xs (MonoidListmappend ys zs) = MonoidListmappend (MonoidListmappend xs ys) zs
+ 1: MonoidListmappend Empty xs = xs         
+ 2: MonoidListmappend xs Empty = xs         
+ 3: MonoidListmappend xs Empty = xs         
+ 4: MonoidListmappend Empty xs = xs         
+ 5: MonoidListmappend (Cons y xs) ys = Cons y (MonoidListmappend xs ys)
+ 6: MonoidListmappend (MonoidListmappend xs ys) zs = MonoidListmappend xs (MonoidListmappend ys zs)

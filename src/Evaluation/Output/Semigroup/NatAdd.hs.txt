@@ -1,0 +1,65 @@
+[testing schemas of size 1: 1/3...]                                  testing schemas of size 1: 2/3...]                                  testing schemas of size 1: 3/3...]                                  testing schemas of size 2: 1/5...]                                  testing schemas of size 2: 2/5...]                                  testing schemas of size 2: 3/5...]                                  testing schemas of size 2: 4/5...]                                  testing schemas of size 2: 5/5...]                                  testing schemas of size 3: 1/4...]                                  testing schemas of size 3: 2/4...]                                  testing schemas of size 3: 3/4...]                                  testing schemas of size 3: 4/4...]                                  = Signature ==
+Succ :: NatAdd -> NatAdd
+Zero :: NatAdd
+
+== Laws ==
+
+[testing schemas of size 1: 1/4...]                                  testing schemas of size 1: 2/4...]                                  testing schemas of size 1: 3/4...]                                  testing schemas of size 1: 4/4...]                                  testing schemas of size 2: 1/8...]                                  testing schemas of size 2: 2/8...]                                  testing schemas of size 2: 3/8...]                                  testing schemas of size 2: 4/8...]                                  testing schemas of size 2: 5/8...]                                  testing schemas of size 2: 6/8...]                                  testing schemas of size 2: 7/8...]                                  testing schemas of size 2: 8/8...]                                  testing schemas of size 3: 1/12...]                                    [testing schemas of size 3: 2/12...]                                    [testing schemas of size 3: 3/12...]                                    [testing schemas of size 3: 4/12...]                                    [running extra pruner...]                        = Statistics ==
+45 events created in total (7 schemas, 7 terms, 20 creation, 11 miscellaneous), 15 hooks.
+25 schema test cases for 7 representative schemas.
+7 term test cases for 7 representative terms.
+0 equal schemas and 0 equal terms generated.
+6 pruning equations.
+
+== Signature ==
+             Succ :: NatAdd -> NatAdd
+             Zero :: NatAdd
+semigroupNatAddop :: NatAdd -> NatAdd -> NatAdd
+
+== Laws ==
+semigroupNatAddop x Zero = x
+[completing theory...]                      [renormalising existing terms...]                                testing schemas of size 3: 5/12...]                                    [running extra pruner...]                        emigroupNatAddop Zero x = x
+[completing theory...]                      [renormalising existing terms...]                                testing schemas of size 3: 6/12...]                                    [testing schemas of size 3: 7/12...]                                    [testing schemas of size 3: 8/12...]                                    [testing schemas of size 3: 9/12...]                                    [testing schemas of size 3: 10/12...]                                    testing schemas of size 3: 11/12...]                                    testing schemas of size 3: 12/12...]                                    running extra pruner...]                        emigroupNatAddop x y = semigroupNatAddop y x
+[completing theory...]                      [renormalising existing terms...]                                testing schemas of size 4: 1/17...]                                    [testing schemas of size 4: 2/17...]                                    [testing schemas of size 4: 3/17...]                                    [running extra pruner...]                        emigroupNatAddop (Succ x) y = semigroupNatAddop x (Succ y)
+[completing theory...]                      [renormalising existing terms...]                                testing schemas of size 4: 4/17...]                                    [running extra pruner...]                        ucc (semigroupNatAddop x y) = semigroupNatAddop x (Succ y)
+[completing theory...]                      [renormalising existing terms...]                                running extra pruner...]                        ucc (semigroupNatAddop y x) = semigroupNatAddop x (Succ y)
+[completing theory...]                      [renormalising existing terms...]                                testing schemas of size 4: 5/17...]                                    [testing schemas of size 4: 6/17...]                                    [testing schemas of size 4: 7/17...]                                    [testing schemas of size 4: 8/17...]                                    [running extra pruner...]                        emigroupNatAddop x (Succ Zero) = Succ x
+[completing theory...]                      [renormalising existing terms...]                                testing schemas of size 4: 9/17...]                                    [testing schemas of size 4: 10/17...]                                    testing schemas of size 4: 11/17...]                                    testing schemas of size 4: 12/17...]                                    testing schemas of size 4: 13/17...]                                    testing schemas of size 4: 14/17...]                                    testing schemas of size 4: 15/17...]                                    testing schemas of size 4: 16/17...]                                    testing schemas of size 4: 17/17...]                                    running extra pruner...]                        emigroupNatAddop x (Succ y) = semigroupNatAddop y (Succ x)
+[completing theory...]                      [renormalising existing terms...]                                testing schemas of size 5: 1/16...]                                    [testing schemas of size 5: 2/16...]                                    [running extra pruner...]                        emigroupNatAddop (semigroupNatAddop x y) z =
+  semigroupNatAddop x (semigroupNatAddop y z)
+[completing theory...]                      [renormalising existing terms...]                                running extra pruner...]                        emigroupNatAddop (semigroupNatAddop y x) z =
+  semigroupNatAddop x (semigroupNatAddop y z)
+[completing theory...]                      [renormalising existing terms...]                                running extra pruner...]                        emigroupNatAddop (semigroupNatAddop z x) y =
+  semigroupNatAddop x (semigroupNatAddop y z)
+[completing theory...]                      [renormalising existing terms...]                                running extra pruner...]                        emigroupNatAddop (semigroupNatAddop y x) x =
+  semigroupNatAddop x (semigroupNatAddop x y)
+[completing theory...]                      [renormalising existing terms...]                                running extra pruner...]                        emigroupNatAddop (semigroupNatAddop y x) y =
+  semigroupNatAddop x (semigroupNatAddop y y)
+[completing theory...]                      [renormalising existing terms...]                                running extra pruner...]                        emigroupNatAddop (semigroupNatAddop x y) x =
+  semigroupNatAddop x (semigroupNatAddop x y)
+[completing theory...]                      [renormalising existing terms...]                                running extra pruner...]                        emigroupNatAddop (semigroupNatAddop x y) y =
+  semigroupNatAddop x (semigroupNatAddop y y)
+[completing theory...]                      [renormalising existing terms...]                                running extra pruner...]                        emigroupNatAddop (semigroupNatAddop y x) x =
+  semigroupNatAddop x (semigroupNatAddop x y)
+[completing theory...]                      [renormalising existing terms...]                                running extra pruner...]                        emigroupNatAddop (semigroupNatAddop y x) y =
+  semigroupNatAddop x (semigroupNatAddop y y)
+[completing theory...]                      [renormalising existing terms...]                                running extra pruner...]                        emigroupNatAddop (semigroupNatAddop y x) x =
+  semigroupNatAddop x (semigroupNatAddop x y)
+[completing theory...]                      [renormalising existing terms...]                                running extra pruner...]                        emigroupNatAddop (semigroupNatAddop y x) y =
+  semigroupNatAddop x (semigroupNatAddop y y)
+[completing theory...]                      [renormalising existing terms...]                                testing schemas of size 5: 3/16...]                                    [testing schemas of size 5: 4/16...]                                    [testing schemas of size 5: 5/16...]                                    [testing schemas of size 5: 6/16...]                                    [testing schemas of size 5: 7/16...]                                    [testing schemas of size 5: 8/16...]                                    [testing schemas of size 5: 9/16...]                                    [testing schemas of size 5: 10/16...]                                    testing schemas of size 5: 11/16...]                                    testing schemas of size 5: 12/16...]                                    testing schemas of size 5: 13/16...]                                    testing schemas of size 5: 14/16...]                                    running extra pruner...]                        emigroupNatAddop (Succ x) (Succ Zero) = Succ (Succ x)
+[completing theory...]                      [renormalising existing terms...]                                testing schemas of size 5: 15/16...]                                    testing schemas of size 5: 16/16...]                                    running extra pruner...]                        emigroupNatAddop x (semigroupNatAddop y z) =
+  semigroupNatAddop y (semigroupNatAddop x z)
+[completing theory...]                      [renormalising existing terms...]                                running extra pruner...]                        emigroupNatAddop x (Succ (Succ y)) =
+  semigroupNatAddop y (Succ (Succ x))
+[completing theory...]                      [renormalising existing terms...]                                testing schemas of size 6: 1/12...]                                    [testing schemas of size 6: 2/12...]                                    [testing schemas of size 6: 3/12...]                                    [testing schemas of size 6: 4/12...]                                    [testing schemas of size 6: 5/12...]                                    [testing schemas of size 6: 6/12...]                                    [testing schemas of size 6: 7/12...]                                    [testing schemas of size 6: 8/12...]                                    [testing schemas of size 6: 9/12...]                                    [testing schemas of size 6: 10/12...]                                    testing schemas of size 6: 11/12...]                                    testing schemas of size 6: 12/12...]                                    testing schemas of size 7: 1/9...]                                  testing schemas of size 7: 2/9...]                                  testing schemas of size 7: 3/9...]                                  testing schemas of size 7: 4/9...]                                  testing schemas of size 7: 5/9...]                                  testing schemas of size 7: 6/9...]                                  testing schemas of size 7: 7/9...]                                  testing schemas of size 7: 8/9...]                                  testing schemas of size 7: 9/9...]                                  
+== Statistics ==
+318 events created in total (18 schemas, 55 terms, 166 creation, 79 miscellaneous), 16 hooks.
+61 schema test cases for 13 representative schemas.
+94 term test cases for 28 representative terms.
+5 equal schemas and 27 equal terms generated.
+31 pruning equations.
+
+Considering:
+  SemigroupNatAddop (SemigroupNatAddop n m) o = SemigroupNatAddop n (SemigroupNatAddop m o)
+Proved by inductio

@@ -1,0 +1,106 @@
+== Signature ==
+Succ :: NatAdd -> NatAdd
+Zero :: NatAdd
+
+== Laws ==
+
+== Statistics ==
+45 events created in total (7 schemas, 7 terms, 20 creation, 11 miscellaneous), 15 hooks.
+25 schema test cases for 7 representative schemas.
+7 term test cases for 7 representative terms.
+0 equal schemas and 0 equal terms generated.
+6 pruning equations.
+
+== Signature ==
+               Succ :: NatAdd -> NatAdd
+               Zero :: NatAdd
+monoidNatAddmappend :: NatAdd -> NatAdd -> NatAdd
+
+== Laws ==
+monoidNatAddmappend x Zero = x
+monoidNatAddmappend Zero x = x
+monoidNatAddmappend x y = monoidNatAddmappend y x
+monoidNatAddmappend (Succ x) y = monoidNatAddmappend x (Succ y)
+Succ (monoidNatAddmappend x y) = monoidNatAddmappend x (Succ y)
+Succ (monoidNatAddmappend y x) = monoidNatAddmappend x (Succ y)
+monoidNatAddmappend x (Succ Zero) = Succ x
+monoidNatAddmappend x (Succ y) = monoidNatAddmappend y (Succ x)
+monoidNatAddmappend (monoidNatAddmappend x y) z =
+  monoidNatAddmappend x (monoidNatAddmappend y z)
+monoidNatAddmappend (monoidNatAddmappend y x) z =
+  monoidNatAddmappend x (monoidNatAddmappend y z)
+monoidNatAddmappend (monoidNatAddmappend z x) y =
+  monoidNatAddmappend x (monoidNatAddmappend y z)
+monoidNatAddmappend (monoidNatAddmappend y x) x =
+  monoidNatAddmappend x (monoidNatAddmappend x y)
+monoidNatAddmappend (monoidNatAddmappend y x) y =
+  monoidNatAddmappend x (monoidNatAddmappend y y)
+monoidNatAddmappend (monoidNatAddmappend x y) x =
+  monoidNatAddmappend x (monoidNatAddmappend x y)
+monoidNatAddmappend (monoidNatAddmappend x y) y =
+  monoidNatAddmappend x (monoidNatAddmappend y y)
+monoidNatAddmappend (monoidNatAddmappend y x) x =
+  monoidNatAddmappend x (monoidNatAddmappend x y)
+monoidNatAddmappend (monoidNatAddmappend y x) y =
+  monoidNatAddmappend x (monoidNatAddmappend y y)
+monoidNatAddmappend (monoidNatAddmappend y x) x =
+  monoidNatAddmappend x (monoidNatAddmappend x y)
+monoidNatAddmappend (monoidNatAddmappend y x) y =
+  monoidNatAddmappend x (monoidNatAddmappend y y)
+monoidNatAddmappend (Succ x) (Succ Zero) = Succ (Succ x)
+monoidNatAddmappend x (monoidNatAddmappend y z) =
+  monoidNatAddmappend y (monoidNatAddmappend x z)
+monoidNatAddmappend x (Succ (Succ y)) =
+  monoidNatAddmappend y (Succ (Succ x))
+
+== Statistics ==
+318 events created in total (18 schemas, 55 terms, 166 creation, 79 miscellaneous), 16 hooks.
+49 schema test cases for 13 representative schemas.
+75 term test cases for 28 representative terms.
+5 equal schemas and 27 equal terms generated.
+31 pruning equations.
+
+Considering:
+  MonoidNatAddmappend n (MonoidNatAddmappend m o) = MonoidNatAddmappend (MonoidNatAddmappend n m) o
+Proved by induction on n, m
+Considering:
+  MonoidNatAddmappend Zero n = n
+Proved without using induction
+Considering:
+  MonoidNatAddmappend n Zero = n
+Proved by induction on n
+Considering:
+  MonoidNatAddmappend n Zero = n
+Proved without using induction
+Considering:
+  MonoidNatAddmappend Zero n = n
+Proved without using induction
+Considering:
+  MonoidNatAddmappend m n = MonoidNatAddmappend n m
+Proved by induction on n, m
+Considering:
+  MonoidNatAddmappend (Succ n) m = MonoidNatAddmappend n (Succ m)
+Proved without using induction
+Considering:
+  Succ (MonoidNatAddmappend n m) = MonoidNatAddmappend n (Succ m)
+Proved without using induction
+Considering:
+  Succ (MonoidNatAddmappend m n) = MonoidNatAddmappend n (Succ m)
+Proved without using induction
+Considering:
+  MonoidNatAddmappend n (Succ Zero) = Succ n
+Proved without using induction
+Considering:
+  MonoidNatAddmappend m (Succ n) = MonoidNatAddmappend n (Succ m)
+Proved without using induction
+Considering:
+  MonoidNatAddmappend (MonoidNatAddmappend n m) o = MonoidNatAddmappend n (MonoidNatAddmappend m o)
+Proved without using induction
+Considering:
+  MonoidNatAddmappend (MonoidNatAddmappend m n) o = MonoidNatAddmappend n (MonoidNatAddmappend m o)
+Proved without using induction
+Considering:
+  MonoidNatAddmappend (MonoidNatAddmappend o n) m = MonoidNatAddmappend n (MonoidNatAddmappend m o)
+Proved without using induction
+Considering:
+  MonoidNatAddmappend (MonoidNatAddmappend m n) n = MonoidNatAddmappe

@@ -1,0 +1,74 @@
+emna: Lint failed after RemoveNewtype:
+Type constructor Eq of arity 0 applied to 1 type arguments
+in context
+  (par (a) ((() (Eq (List a)))))
+in context
+  (define-fun-rec
+    EqList==
+      () (=> (List Eq) (=> (List Eq) Bool))
+      (let ((x (@ (as $fEqList (Eq (List Eq))) y)))
+        (lambda ((z (List Eq)))
+          (lambda ((x2 (List Eq)))
+            (let
+              ((x3 false)
+               (x4 z))
+              (match x4
+                (case Empty
+                  (let ((x5 x2))
+                    (match x5
+                      (case Empty true)
+                      (case (Cons x6 x7) x3))))
+                (case (Cons c as)
+                  (let ((x8 x2))
+                    (match x8
+                      (case Empty x3)
+                      (case (Cons b2 bs)
+                        (@ (@ and (@ (@ Eq== c) b2)) (@ (@ EqList== as) bs))))))))))))
+in context
+  (declare-sort Eq 0)
+  (declare-datatypes (a)
+    ((List2 (Empty) (Cons (Cons_0 a) (Cons_1 (List2 a))))))
+  (declare-const Eq== (=> Eq (=> Eq Bool)))
+  (declare-const Eq/= (=> Eq (=> Eq Bool)))
+  (define-fun
+    and2
+      () (=> Bool (=> Bool Bool))
+      (lambda ((x Bool))
+        (lambda ((y Bool)) (let ((wild x)) (ite wild y false)))))
+  (define-fun-rec
+    EqList==
+      () (=> (List2 Eq) (=> (List2 Eq) Bool))
+      (let ((x (@ (as $fEqList (Eq (List2 Eq))) y)))
+        (lambda ((z (List2 Eq)))
+          (lambda ((x2 (List2 Eq)))
+            (let
+              ((x3 false)
+               (x4 z))
+              (match x4
+                (case Empty
+                  (let ((x5 x2))
+                    (match x5
+                      (case Empty true)
+                      (case (Cons x6 x7) x3))))
+                (case (Cons c bs)
+                  (let ((x8 x2))
+                    (match x8
+                      (case Empty x3)
+                      (case (Cons b2 cs)
+                        (@ (@ and2 (@ (@ Eq== c) b2)) (@ (@ EqList== bs) cs))))))))))))
+  (assert-not (forall ((a (List2 Eq))) (@ (@ EqList== a) a)))
+  (assert-not
+    (forall ((a (List2 Eq)) (b (List2 Eq)))
+      (=> (@ (@ EqList== a) b) (@ (@ EqList== b) a))))
+  (assert-not
+    (forall ((a (List2 Eq)) (b (List2 Eq)) (c (List2 Eq)))
+      (=> (and (@ (@ EqList== a) b) (@ (@ EqList== b) c))
+        (@ (@ EqList== a) c))))
+  (assert (forall ((a Eq)) (@ (@ Eq== a) a)))
+  (assert
+    (forall ((a Eq) (b Eq)) (=> (@ (@ Eq== a) b) (@ (@ Eq== b) a))))
+  (assert
+    (forall ((a Eq) (b Eq) (c Eq))
+      (=> (and (@ (@ Eq== a) b) (@ (@ Eq== b) c)) (@ (@ Eq== a) c))))
+  (check-sat)
+!!!

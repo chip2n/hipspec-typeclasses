@@ -1,0 +1,2 @@
+lawAssociativity1: Illegal type: m b
+

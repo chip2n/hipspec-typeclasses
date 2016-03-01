@@ -1,8 +1,6 @@
 == Signature ==
 False :: Bool
  True :: Bool
- Succ :: Nat -> Nat
- Zero :: Nat
  (&&) :: Bool -> Bool -> Bool
  (||) :: Bool -> Bool -> Bool
   not :: Bool -> Bool
@@ -67,118 +65,90 @@ x || (y || z) = y || (x || z)
 (z && x) || (y || x) = x || y
 
 == Statistics ==
-2920 events created in total (26 schemas, 168 terms, 2463 creation, 263 miscellaneous), 19 hooks.
-31 schema test cases for 11 representative schemas.
-2088 term test cases for 105 representative terms.
+2882 events created in total (20 schemas, 162 terms, 2446 creation, 254 miscellaneous), 16 hooks.
+9 schema test cases for 5 representative schemas.
+2715 term test cases for 99 representative terms.
 15 equal schemas and 63 equal terms generated.
-83 pruning equations.
+77 pruning equations.
 
 == Signature ==
- False :: Bool
-  True :: Bool
-  Succ :: Nat -> Nat
-  Zero :: Nat
-  (&&) :: Bool -> Bool -> Bool
-  (||) :: Bool -> Bool -> Bool
-   not :: Bool -> Bool
-ordNat :: Nat -> Nat -> Bool
+        False :: Bool
+         True :: Bool
+         (&&) :: Bool -> Bool -> Bool
+         (||) :: Bool -> Bool -> Bool
+          not :: Bool -> Bool
+semiringBool2 :: Bool -> Bool -> Bool
 
 == Laws ==
-ordNat x x = False
-ordNat x Zero = False
-ordNat x (Succ x) = True
-ordNat (Succ x) x = False
-not (ordNat y x) = ordNat x (Succ y)
-ordNat Zero (Succ x) = True
-ordNat (Succ x) (Succ y) = ordNat x y
-ordNat x y && ordNat y x = False
-ordNat x y && ordNat Zero y = ordNat x y
-ordNat y x || ordNat Zero x = ordNat Zero x
-ordNat x y || ordNat Zero x = ordNat y x || ordNat Zero y
-ordNat Zero x || ordNat Zero y = ordNat x y || ordNat Zero x
+semiringBool2 x y = x && y
 
 == Statistics ==
-3326 events created in total (24 schemas, 317 terms, 2735 creation, 250 miscellaneous), 21 hooks.
-83 schema test cases for 18 representative schemas.
-7036 term test cases for 304 representative terms.
-6 equal schemas and 13 equal terms generated.
-104 pruning equations.
+2242 events created in total (7 schemas, 100 terms, 1988 creation, 147 miscellaneous), 16 hooks.
+9 schema test cases for 5 representative schemas.
+1742 term test cases for 99 representative terms.
+2 equal schemas and 1 equal terms generated.
+84 pruning equations.
 
 == Signature ==
-False :: Bool
- True :: Bool
- Succ :: Nat -> Nat
- Zero :: Nat
- (&&) :: Bool -> Bool -> Bool
- (||) :: Bool -> Bool -> Bool
-  not :: Bool -> Bool
-eqNat :: Nat -> Nat -> Bool
+       False :: Bool
+        True :: Bool
+        (&&) :: Bool -> Bool -> Bool
+        (||) :: Bool -> Bool -> Bool
+         not :: Bool -> Bool
+semiringBool :: Bool -> Bool -> Bool
 
 == Laws ==
-eqNat x x = True
-eqNat x y = eqNat y x
-eqNat x (Succ x) = False
-eqNat Zero (Succ x) = False
-eqNat (Succ x) (Succ y) = eqNat x y
-eqNat x y && eqNat y z = eqNat x y && eqNat x z
-eqNat x z && eqNat y z = eqNat x y && eqNat x z
+semiringBool x y = x || y
 
 == Statistics ==
-3221 events created in total (23 schemas, 198 terms, 2743 creation, 257 miscellaneous), 21 hooks.
-76 schema test cases for 18 representative schemas.
-4311 term test cases for 177 representative terms.
-5 equal schemas and 21 equal terms generated.
-116 pruning equations.
+2242 events created in total (7 schemas, 100 terms, 1988 creation, 147 miscellaneous), 16 hooks.
+9 schema test cases for 5 representative schemas.
+2719 term test cases for 99 representative terms.
+2 equal schemas and 1 equal terms generated.
+88 pruning equations.
 
 == Signature ==
- False :: Bool
-  True :: Bool
-  Succ :: Nat -> Nat
-  Zero :: Nat
-  (&&) :: Bool -> Bool -> Bool
-  (||) :: Bool -> Bool -> Bool
-   not :: Bool -> Bool
- eqNat :: Nat -> Nat -> Bool
-ordNat :: Nat -> Nat -> Bool
+        False :: Bool
+         True :: Bool
+         (&&) :: Bool -> Bool -> Bool
+         (||) :: Bool -> Bool -> Bool
+          not :: Bool -> Bool
+ semiringBool :: Bool -> Bool -> Bool
+semiringBool2 :: Bool -> Bool -> Bool
 
 == Laws ==
-ordNat x (Succ Zero) = eqNat x Zero
-not (eqNat x Zero) = ordNat Zero x
-eqNat x y && ordNat x y = False
-eqNat x y && ordNat y x = False
-eqNat x y || ordNat x y = ordNat x (Succ y)
-eqNat y x || ordNat x y = ordNat x (Succ y)
-ordNat x y || ordNat y x = not (eqNat x y)
-eqNat x Zero && ordNat y x = False
-eqNat x y && ordNat y z = eqNat x y && ordNat x z
-eqNat x y && ordNat z y = eqNat x y && ordNat z x
-eqNat x Zero || ordNat Zero y = eqNat x y || ordNat Zero y
 
 == Statistics ==
-5031 events created in total (26 schemas, 541 terms, 4108 creation, 356 miscellaneous), 21 hooks.
-93 schema test cases for 23 representative schemas.
-11212 term test cases for 524 representative terms.
-3 equal schemas and 17 equal terms generated.
-133 pruning equations.
+2241 events created in total (6 schemas, 99 terms, 1987 creation, 149 miscellaneous), 16 hooks.
+13 schema test cases for 5 representative schemas.
+1475 term test cases for 99 representative terms.
+1 equal schemas and 0 equal terms generated.
+91 pruning equations.
 
 Considering:
-  ((nOrdNat<=m)&&(mOrdNat<=n)) => (nEqNat==m)
-Proved by induction on n, m
+  SemiringBool (SemiringBool x y) z = SemiringBool x (SemiringBool y z)
+Proved without using induction
 Considering:
-  (nOrdNat<=m)||(mOrdNat<=n)
+  SemiringBool x y = SemiringBool y x
+Proved without using induction
+Considering:
+  x = x
+Proved without using induction
+Considering:
+  SemiringBool x true
+Proved without using induction
+Considering:
+  SemiringBool (SemiringBool x y) z = SemiringBool x (SemiringBool y z)
+Proved without using induction
+Considering:
+  SemiringBool x (SemiringBool2 y z) = SemiringBool2 (SemiringBool x y) (SemiringBool x z)
 Failed to prove.
 Considering:
-  ((nOrdNat<=m)&&(mOrdNat<=o)) => (nOrdNat<=o)
-Proved by induction on n, m
+  SemiringBool (SemiringBool2 x y) z = SemiringBool2 (SemiringBool x z) (SemiringBool y z)
+Proved without using induction
 Considering:
-  nEqNat==n
-Proved by induction on n
-Considering:
-  (nEqNat==m) => (mEqNat==n)
-Proved by induction on n, m
-Considering:
-  ((nEqNat==m)&&(mEqNat==o)) => (nEqNat==o)
-Proved by induction on n, m
+  x = x
+Proved without using induction
 Considering:
   not false = true
 Proved without using induction
@@ -351,98 +321,82 @@ Considering:
   ((x&&y)||(z||y)) = (y||z)
 Proved without using induction
 Considering:
-  (nOrdNat<=n) = false
-Proved by induction on n
-Considering:
-  (nOrdNat<=Zero) = false
+  SemiringBool x y = (x&&y)
 Proved without using induction
 Considering:
-  (nOrdNat<=Succ n) = true
-Proved by induction on n
-Considering:
-  (Succ nOrdNat<=n) = false
-Proved without using induction
-Considering:
-  not (mOrdNat<=n) = (nOrdNat<=Succ m)
-Proved by induction on n, m
-Considering:
-  (ZeroOrdNat<=Succ n) = true
-Proved without using induction
-Considering:
-  (Succ nOrdNat<=Succ m) = (nOrdNat<=m)
-Proved without using induction
-Considering:
-  ((mOrdNat<=n)&&(nOrdNat<=m)) = false
-Proved without using induction
-Considering:
-  ((nOrdNat<=m)&&(ZeroOrdNat<=m)) = (nOrdNat<=m)
-Proved without using induction
-Considering:
-  ((nOrdNat<=m)||(ZeroOrdNat<=m)) = (ZeroOrdNat<=m)
-Proved without using induction
-Considering:
-  ((nOrdNat<=m)||(ZeroOrdNat<=n)) = ((mOrdNat<=n)||(ZeroOrdNat<=m))
-Proved without using induction
-Considering:
-  ((ZeroOrdNat<=m)||(ZeroOrdNat<=n)) = ((mOrdNat<=n)||(ZeroOrdNat<=m))
-Proved without using induction
-Considering:
-  (nEqNat==n) = true
-Proved without using induction
-Considering:
-  (mEqNat==n) = (nEqNat==m)
-Proved without using induction
-Considering:
-  (nEqNat==Succ n) = false
-Proved by induction on n
-Considering:
-  (ZeroEqNat==Succ n) = false
-Proved without using induction
-Considering:
-  (Succ nEqNat==Succ m) = (nEqNat==m)
-Proved without using induction
-Considering:
-  ((mEqNat==n)&&(nEqNat==o)) = ((mEqNat==n)&&(mEqNat==o))
-Proved without using induction
-Considering:
-  ((mEqNat==o)&&(nEqNat==o)) = ((mEqNat==n)&&(mEqNat==o))
-Proved without using induction
-Considering:
-  (nOrdNat<=Succ Zero) = (nEqNat==Zero)
-Proved without using induction
-Considering:
-  not (nEqNat==Zero) = (ZeroOrdNat<=n)
-Proved without using induction
-Considering:
-  ((nEqNat==m)&&(nOrdNat<=m)) = false
-Proved by induction on n, m
-Considering:
-  ((mEqNat==n)&&(nOrdNat<=m)) = false
-Proved without using induction
-Considering:
-  ((nEqNat==m)||(nOrdNat<=m)) = (nOrdNat<=Succ m)
-Proved by induction on n, m
-Considering:
-  ((mEqNat==n)||(nOrdNat<=m)) = (nOrdNat<=Succ m)
-Proved without using induction
-Considering:
-  ((nOrdNat<=m)||(mOrdNat<=n)) = not (nEqNat==m)
-Proved without using induction
-Considering:
-  ((mEqNat==Zero)&&(nOrdNat<=m)) = false
-Proved without using induction
-Considering:
-  ((mEqNat==n)&&(nOrdNat<=o)) = ((mEqNat==n)&&(mOrdNat<=o))
-Proved without using induction
-Considering:
-  ((oEqNat==n)&&(mOrdNat<=n)) = ((oEqNat==n)&&(mOrdNat<=o))
-Proved without using induction
-Considering:
-  ((nEqNat==Zero)||(ZeroOrdNat<=m)) = ((nEqNat==m)||(ZeroOrdNat<=m))
+  SemiringBool x y = (x||y)
 Proved without using induction
 Reconsidering conjectures...
 Considering:
-  (nOrdNat<=m)||(mOrdNat<=n)
-Failed to prove.
-emna: Failed to prove formula(s):
-  (nOrdNat<=m)||(mOrdNat<=n)
+  SemiringBool x (SemiringBool2 y z) = SemiringBool2 (SemiringBool x y) (SemiringBool x z)
+Proved without using induction
+Finished!
+
+Summary:
+ 0: SemiringBool (SemiringBool x y) z = SemiringBool x (SemiringBool y z)
+ 1: SemiringBool x y = SemiringBool y x     
+ 2: x = x                                   
+ 3: SemiringBool x true                     
+ 4: SemiringBool (SemiringBool x y) z = SemiringBool x (SemiringBool y z)
+ 5: SemiringBool (SemiringBool2 x y) z = SemiringBool2 (SemiringBool x z) (SemiringBool y z)
+ 6: x = x                                   
+ 7: not false = true                        
+ 8: not true = false                        
+ 9: (x&&x) = x                              
+10: (x||x) = x                              
+11: (x&&false) = false                      
+12: (x&&true) = x                           
+13: (false&&x) = false                      
+14: (true&&x) = x                           
+15: (x||false) = x                          
+16: (x||true) = true                        
+17: (false||x) = x                          
+18: (true||x) = true                        
+19: not (not x) = x                         
+20: (y&&x) = (x&&y)                         
+21: (y||x) = (x||y)                         
+22: (x&&not x) = false                      
+23: (x||not x) = true                       
+24: (x&&(x&&y)) = (x&&y)                    
+25: (y&&(x&&y)) = (x&&y)                    
+26: (y&&(y||x)) = y                         
+27: (y&&(x||y)) = y                         
+28: ((x&&y)&&z) = (x&&(y&&z))               
+29: ((y&&x)&&z) = (x&&(y&&z))               
+30: ((z&&x)&&y) = (x&&(y&&z))               
+31: (y||(y&&x)) = y                         
+32: (y||(x&&y)) = y                         
+33: (x||(x||y)) = (x||y)                    
+34: (y||(x||y)) = (x||y)                    
+35: ((x||y)||z) = (x||(y||z))               
+36: ((y||x)||z) = (x||(y||z))               
+37: ((z||x)||y) = (x||(y||z))               
+38: (not x&&not y) = not (x||y)             
+39: (not x||not y) = not (x&&y)             
+40: (y&&(x&&z)) = (x&&(y&&z))               
+41: (y||(x||z)) = (x||(y||z))               
+42: ((y&&x)&&not y) = false                 
+43: ((x&&y)&&not y) = false                 
+44: ((y||x)&&not y) = (x&&not y)            
+45: ((x||y)&&not y) = (x&&not y)            
+46: ((y&&x)||not y) = (x||not y)            
+47: ((x&&y)||not y) = (x||not y)            
+48: ((y||x)||not y) = true                  
+49: ((x||y)||not y) = true                  
+50: ((y&&z)&&(y||x)) = (y&&z)               
+51: ((y&&z)&&(x||y)) = (y&&z)               
+52: ((z&&y)&&(y||x)) = (y&&z)               
+53: ((z&&y)&&(x||y)) = (y&&z)               
+54: ((x||y)&&(x||z)) = (x||(y&&z))          
+55: ((y||x)&&(x||z)) = (x||(y&&z))          
+56: ((y||x)&&(z||x)) = (x||(y&&z))          
+57: ((x&&y)||(x&&z)) = (x&&(y||z))          
+58: ((y&&x)||(x&&z)) = (x&&(y||z))          
+59: ((y&&x)||(z&&x)) = (x&&(y||z))          
+60: ((y&&x)||(y||z)) = (y||z)               
+61: ((x&&y)||(y||z)) = (y||z)               
+62: ((y&&x)||(z||y)) = (y||z)               
+63: ((x&&y)||(z||y)) = (y||z)               
+64: SemiringBool x y = (x&&y)               
+65: SemiringBool x y = (x||y)               
+66: SemiringBool x (SemiringBool2 y z) = SemiringBool2 (SemiringBool x y) (SemiringBool x z)

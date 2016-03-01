@@ -1,0 +1,372 @@
+== Signature ==
+False :: Bool
+ True :: Bool
+ Succ :: Nat -> Nat
+ Zero :: Nat
+ (&&) :: Bool -> Bool -> Bool
+ (||) :: Bool -> Bool -> Bool
+  not :: Bool -> Bool
+
+== Laws ==
+not False = True
+not True = False
+x && x = x
+x || x = x
+x && False = False
+x && True = x
+False && x = False
+True && x = x
+x || False = x
+x || True = True
+False || x = x
+True || x = True
+not (not x) = x
+x && y = y && x
+x || y = y || x
+x && not x = False
+x || not x = True
+x && (x && y) = x && y
+y && (x && y) = x && y
+x && (x || y) = x
+x && (y || x) = x
+(x && y) && z = x && (y && z)
+(y && x) && z = x && (y && z)
+(z && x) && y = x && (y && z)
+x || (x && y) = x
+x || (y && x) = x
+x || (x || y) = x || y
+y || (x || y) = x || y
+(x || y) || z = x || (y || z)
+(y || x) || z = x || (y || z)
+(z || x) || y = x || (y || z)
+not x && not y = not (x || y)
+not x || not y = not (x && y)
+x && (y && z) = y && (x && z)
+x || (y || z) = y || (x || z)
+(x && y) && not x = False
+(x && y) && not y = False
+(y || x) && not y = x && not y
+(x || y) && not y = x && not y
+(y && x) || not y = x || not y
+(x && y) || not y = x || not y
+(x || y) || not x = True
+(x || y) || not y = True
+(x && y) && (x || z) = x && y
+(x && y) && (z || x) = x && y
+(y && x) && (x || z) = x && y
+(y && x) && (z || x) = x && y
+(x || y) && (x || z) = x || (y && z)
+(y || x) && (x || z) = x || (y && z)
+(y || x) && (z || x) = x || (y && z)
+(x && y) || (x && z) = x && (y || z)
+(y && x) || (x && z) = x && (y || z)
+(y && x) || (z && x) = x && (y || z)
+(x && z) || (x || y) = x || y
+(z && x) || (x || y) = x || y
+(x && z) || (y || x) = x || y
+(z && x) || (y || x) = x || y
+
+== Statistics ==
+2920 events created in total (26 schemas, 168 terms, 2463 creation, 263 miscellaneous), 19 hooks.
+27 schema test cases for 11 representative schemas.
+1332 term test cases for 105 representative terms.
+15 equal schemas and 63 equal terms generated.
+83 pruning equations.
+
+== Signature ==
+False :: Bool
+ True :: Bool
+ Succ :: Nat -> Nat
+ Zero :: Nat
+ (&&) :: Bool -> Bool -> Bool
+ (||) :: Bool -> Bool -> Bool
+  not :: Bool -> Bool
+eqNat :: Nat -> Nat -> Bool
+
+== Laws ==
+eqNat x x = True
+eqNat x y = eqNat y x
+eqNat x (Succ x) = False
+eqNat Zero (Succ x) = False
+eqNat (Succ x) (Succ y) = eqNat x y
+eqNat x y && eqNat y z = eqNat x y && eqNat x z
+eqNat x z && eqNat y z = eqNat x y && eqNat x z
+
+== Statistics ==
+3221 events created in total (23 schemas, 198 terms, 2743 creation, 257 miscellaneous), 21 hooks.
+60 schema test cases for 18 representative schemas.
+3395 term test cases for 177 representative terms.
+5 equal schemas and 21 equal terms generated.
+100 pruning equations.
+
+Considering:
+  nEqNat==n
+Proved by induction on n
+Considering:
+  (nEqNat==m) => (mEqNat==n)
+Proved by induction on n, m
+Considering:
+  ((nEqNat==m)&&(mEqNat==o)) => (nEqNat==o)
+Proved by induction on n, m
+Considering:
+  not false = true
+Proved without using induction
+Considering:
+  not true = false
+Proved without using induction
+Considering:
+  (x&&x) = x
+Proved without using induction
+Considering:
+  (x||x) = x
+Proved without using induction
+Considering:
+  (x&&false) = false
+Proved without using induction
+Considering:
+  (x&&true) = x
+Proved without using induction
+Considering:
+  (false&&x) = false
+Proved without using induction
+Considering:
+  (true&&x) = x
+Proved without using induction
+Considering:
+  (x||false) = x
+Proved without using induction
+Considering:
+  (x||true) = true
+Proved without using induction
+Considering:
+  (false||x) = x
+Proved without using induction
+Considering:
+  (true||x) = true
+Proved without using induction
+Considering:
+  not (not x) = x
+Proved without using induction
+Considering:
+  (y&&x) = (x&&y)
+Proved without using induction
+Considering:
+  (y||x) = (x||y)
+Proved without using induction
+Considering:
+  (x&&not x) = false
+Proved without using induction
+Considering:
+  (x||not x) = true
+Proved without using induction
+Considering:
+  (x&&(x&&y)) = (x&&y)
+Proved without using induction
+Considering:
+  (y&&(x&&y)) = (x&&y)
+Proved without using induction
+Considering:
+  (y&&(y||x)) = y
+Proved without using induction
+Considering:
+  (y&&(x||y)) = y
+Proved without using induction
+Considering:
+  ((x&&y)&&z) = (x&&(y&&z))
+Proved without using induction
+Considering:
+  ((y&&x)&&z) = (x&&(y&&z))
+Proved without using induction
+Considering:
+  ((z&&x)&&y) = (x&&(y&&z))
+Proved without using induction
+Considering:
+  (y||(y&&x)) = y
+Proved without using induction
+Considering:
+  (y||(x&&y)) = y
+Proved without using induction
+Considering:
+  (x||(x||y)) = (x||y)
+Proved without using induction
+Considering:
+  (y||(x||y)) = (x||y)
+Proved without using induction
+Considering:
+  ((x||y)||z) = (x||(y||z))
+Proved without using induction
+Considering:
+  ((y||x)||z) = (x||(y||z))
+Proved without using induction
+Considering:
+  ((z||x)||y) = (x||(y||z))
+Proved without using induction
+Considering:
+  (not x&&not y) = not (x||y)
+Proved without using induction
+Considering:
+  (not x||not y) = not (x&&y)
+Proved without using induction
+Considering:
+  (y&&(x&&z)) = (x&&(y&&z))
+Proved without using induction
+Considering:
+  (y||(x||z)) = (x||(y||z))
+Proved without using induction
+Considering:
+  ((y&&x)&&not y) = false
+Proved without using induction
+Considering:
+  ((x&&y)&&not y) = false
+Proved without using induction
+Considering:
+  ((y||x)&&not y) = (x&&not y)
+Proved without using induction
+Considering:
+  ((x||y)&&not y) = (x&&not y)
+Proved without using induction
+Considering:
+  ((y&&x)||not y) = (x||not y)
+Proved without using induction
+Considering:
+  ((x&&y)||not y) = (x||not y)
+Proved without using induction
+Considering:
+  ((y||x)||not y) = true
+Proved without using induction
+Considering:
+  ((x||y)||not y) = true
+Proved without using induction
+Considering:
+  ((y&&z)&&(y||x)) = (y&&z)
+Proved without using induction
+Considering:
+  ((y&&z)&&(x||y)) = (y&&z)
+Proved without using induction
+Considering:
+  ((z&&y)&&(y||x)) = (y&&z)
+Proved without using induction
+Considering:
+  ((z&&y)&&(x||y)) = (y&&z)
+Proved without using induction
+Considering:
+  ((x||y)&&(x||z)) = (x||(y&&z))
+Proved without using induction
+Considering:
+  ((y||x)&&(x||z)) = (x||(y&&z))
+Proved without using induction
+Considering:
+  ((y||x)&&(z||x)) = (x||(y&&z))
+Proved without using induction
+Considering:
+  ((x&&y)||(x&&z)) = (x&&(y||z))
+Proved without using induction
+Considering:
+  ((y&&x)||(x&&z)) = (x&&(y||z))
+Proved without using induction
+Considering:
+  ((y&&x)||(z&&x)) = (x&&(y||z))
+Proved without using induction
+Considering:
+  ((y&&x)||(y||z)) = (y||z)
+Proved without using induction
+Considering:
+  ((x&&y)||(y||z)) = (y||z)
+Proved without using induction
+Considering:
+  ((y&&x)||(z||y)) = (y||z)
+Proved without using induction
+Considering:
+  ((x&&y)||(z||y)) = (y||z)
+Proved without using induction
+Considering:
+  (nEqNat==n) = true
+Proved without using induction
+Considering:
+  (mEqNat==n) = (nEqNat==m)
+Proved without using induction
+Considering:
+  (nEqNat==Succ n) = false
+Proved by induction on n
+Considering:
+  (ZeroEqNat==Succ n) = false
+Proved without using induction
+Considering:
+  (Succ nEqNat==Succ m) = (nEqNat==m)
+Proved without using induction
+Considering:
+  ((mEqNat==n)&&(nEqNat==o)) = ((mEqNat==n)&&(mEqNat==o))
+Proved without using induction
+Considering:
+  ((mEqNat==o)&&(nEqNat==o)) = ((mEqNat==n)&&(mEqNat==o))
+Proved without using induction
+Finished!
+
+Summary:
+ 0: nEqNat==n                               
+ 1: (nEqNat==m) => (mEqNat==n)              
+ 2: ((nEqNat==m)&&(mEqNat==o)) => (nEqNat==o)
+ 3: not false = true                        
+ 4: not true = false                        
+ 5: (x&&x) = x                              
+ 6: (x||x) = x                              
+ 7: (x&&false) = false                      
+ 8: (x&&true) = x                           
+ 9: (false&&x) = false                      
+10: (true&&x) = x                           
+11: (x||false) = x                          
+12: (x||true) = true                        
+13: (false||x) = x                          
+14: (true||x) = true                        
+15: not (not x) = x                         
+16: (y&&x) = (x&&y)                         
+17: (y||x) = (x||y)                         
+18: (x&&not x) = false                      
+19: (x||not x) = true                       
+20: (x&&(x&&y)) = (x&&y)                    
+21: (y&&(x&&y)) = (x&&y)                    
+22: (y&&(y||x)) = y                         
+23: (y&&(x||y)) = y                         
+24: ((x&&y)&&z) = (x&&(y&&z))               
+25: ((y&&x)&&z) = (x&&(y&&z))               
+26: ((z&&x)&&y) = (x&&(y&&z))               
+27: (y||(y&&x)) = y                         
+28: (y||(x&&y)) = y                         
+29: (x||(x||y)) = (x||y)                    
+30: (y||(x||y)) = (x||y)                    
+31: ((x||y)||z) = (x||(y||z))               
+32: ((y||x)||z) = (x||(y||z))               
+33: ((z||x)||y) = (x||(y||z))               
+34: (not x&&not y) = not (x||y)             
+35: (not x||not y) = not (x&&y)             
+36: (y&&(x&&z)) = (x&&(y&&z))               
+37: (y||(x||z)) = (x||(y||z))               
+38: ((y&&x)&&not y) = false                 
+39: ((x&&y)&&not y) = false                 
+40: ((y||x)&&not y) = (x&&not y)            
+41: ((x||y)&&not y) = (x&&not y)            
+42: ((y&&x)||not y) = (x||not y)            
+43: ((x&&y)||not y) = (x||not y)            
+44: ((y||x)||not y) = true                  
+45: ((x||y)||not y) = true                  
+46: ((y&&z)&&(y||x)) = (y&&z)               
+47: ((y&&z)&&(x||y)) = (y&&z)               
+48: ((z&&y)&&(y||x)) = (y&&z)               
+49: ((z&&y)&&(x||y)) = (y&&z)               
+50: ((x||y)&&(x||z)) = (x||(y&&z))          
+51: ((y||x)&&(x||z)) = (x||(y&&z))          
+52: ((y||x)&&(z||x)) = (x||(y&&z))          
+53: ((x&&y)||(x&&z)) = (x&&(y||z))          
+54: ((y&&x)||(x&&z)) = (x&&(y||z))          
+55: ((y&&x)||(z&&x)) = (x&&(y||z))          
+56: ((y&&x)||(y||z)) = (y||z)               
+57: ((x&&y)||(y||z)) = (y||z)               
+58: ((y&&x)||(z||y)) = (y||z)               
+59: ((x&&y)||(z||y)) = (y||z)               
+60: (nEqNat==n) = true                      
+61: (mEqNat==n) = (nEqNat==m)               
+62: (nEqNat==Succ n) = false                
+63: (ZeroEqNat==Succ n) = false             
+64: (Succ nEqNat==Succ m) = (nEqNat==m)     
+65: ((mEqNat==n)&&(nEqNat==o)) = ((mEqNat==n)&&(mEqNat==o))
+66: ((mEqNat==o)&&(nEqNat==o)) = ((mEqNat==n)&&(mEqNat==o))

@@ -60,7 +60,7 @@ monoidNatMulmappendadd x (Succ (Succ One)) = Succ (Succ (Succ x))
 == Statistics ==
 328 events created in total (20 schemas, 57 terms, 168 creation, 83 miscellaneous), 16 hooks.
 43 schema test cases for 15 representative schemas.
-77 term test cases for 30 representative terms.
+122 term test cases for 30 representative terms.
 5 equal schemas and 27 equal terms generated.
 31 pruning equations.
 
@@ -76,13 +76,16 @@ monoidNatMulmappend One x = x
 monoidNatMulmappend x y = monoidNatMulmappend y x
 monoidNatMulmappend x (Succ One) = monoidNatMulmappendadd x x
 Term monoidNatMulmappend y (monoidNatMulmappend x z) timed out
-Term monoidNatMulmappend z (monoidNatMulmappend x y) timed out
-Term monoidNatMulmappend y (monoidNatMulmappend x x) timed out
-Term monoidNatMulmappend y (monoidNatMulmappend x y) timed out
-Term monoidNatMulmappend z (monoidNatMulmappend x x) timed out
-Term monoidNatMulmappend z (monoidNatMulmappend x z) timed out
-Term monoidNatMulmappend z (monoidNatMulmappend y y) timed out
-Term monoidNatMulmappend z (monoidNatMulmappend y z) timed out
+Term monoidNatMulmappend y (monoidNatMulmappend y x) timed out
+Term monoidNatMulmappend z (monoidNatMulmappend z x) timed out
+Term monoidNatMulmappend z (monoidNatMulmappend z y) timed out
+monoidNatMulmappend (monoidNatMulmappend x y) z =
+  monoidNatMulmappend x (monoidNatMulmappend y z)
+monoidNatMulmappend (monoidNatMulmappend z x) y =
+  monoidNatMulmappend x (monoidNatMulmappend y z)
+Term monoidNatMulmappend (monoidNatMulmappend y x) x timed out
+Term monoidNatMulmappend (monoidNatMulmappend z x) x timed out
+Term monoidNatMulmappend (monoidNatMulmappend z y) y timed out
 monoidNatMulmappendadd x (monoidNatMulmappend x y) =
   monoidNatMulmappend x (Succ y)
 monoidNatMulmappendadd x (monoidNatMulmappend y x) =
@@ -91,53 +94,12 @@ monoidNatMulmappend (Succ x) (Succ One) =
   monoidNatMulmappendadd x (Succ (Succ x))
 monoidNatMulmappendadd (Succ One) (Succ One) =
   monoidNatMulmappend (Succ One) (Succ One)
+monoidNatMulmappend x (monoidNatMulmappend y z) =
+  monoidNatMulmappend z (monoidNatMulmappend x y)
 monoidNatMulmappend x (monoidNatMulmappendadd y y) =
   monoidNatMulmappend y (monoidNatMulmappendadd x x)
-monoidNatMulmappend (Succ One) (monoidNatMulmappend x y) =
-  monoidNatMulmappend x (monoidNatMulmappendadd y y)
-Term monoidNatMulmappend
-       (monoidNatMulmappend x z) (monoidNatMulmappendadd y y) timed out
-Term monoidNatMulmappend
-       (monoidNatMulmappend x x2) (monoidNatMulmappendadd y y) timed out
-Term monoidNatMulmappend
-       (monoidNatMulmappend x x2) (monoidNatMulmappendadd z z) timed out
-Term monoidNatMulmappend
-       (monoidNatMulmappend y z) (monoidNatMulmappendadd x x) timed out
-Term monoidNatMulmappend
-       (monoidNatMulmappend y x2) (monoidNatMulmappendadd x x) timed out
-Term monoidNatMulmappend
-       (monoidNatMulmappend y x2) (monoidNatMulmappendadd z z) timed out
-Term monoidNatMulmappend
-       (monoidNatMulmappend z x2) (monoidNatMulmappendadd x x) timed out
-Term monoidNatMulmappend
-       (monoidNatMulmappend z x2) (monoidNatMulmappendadd y y) timed out
-Term monoidNatMulmappend
-       (monoidNatMulmappend x y) (monoidNatMulmappendadd x x) timed out
-Term monoidNatMulmappend
-       (monoidNatMulmappend x z) (monoidNatMulmappendadd x x) timed out
-Term monoidNatMulmappend
-       (monoidNatMulmappend x x2) (monoidNatMulmappendadd x x) timed out
-Term monoidNatMulmappend
-       (monoidNatMulmappend y y) (monoidNatMulmappendadd x x) timed out
-Term monoidNatMulmappend
-       (monoidNatMulmappend y z) (monoidNatMulmappendadd y y) timed out
-Term monoidNatMulmappend
-       (monoidNatMulmappend y x2) (monoidNatMulmappendadd y y) timed out
-Term monoidNatMulmappend
-       (monoidNatMulmappend z z) (monoidNatMulmappendadd x x) timed out
-Term monoidNatMulmappend
-       (monoidNatMulmappend z z) (monoidNatMulmappendadd y y) timed out
-Term monoidNatMulmappend
-       (monoidNatMulmappend z x2) (monoidNatMulmappendadd z z) timed out
-Term monoidNatMulmappend
-       (monoidNatMulmappend x2 x2) (monoidNatMulmappendadd x x) timed out
-Term monoidNatMulmappend
-       (monoidNatMulmappend x2 x2) (monoidNatMulmappendadd y y) timed out
-Term monoidNatMulmappend
-       (monoidNatMulmappend x2 x2) (monoidNatMulmappendadd z z) timed out
-monoidNatMulmappendadd
-  (monoidNatMulmappend x y) (monoidNatMulmappend x z) =
-  monoidNatMulmappend x (monoidNatMulmappendadd y z)
+Term monoidNatMulmappendadd
+       (monoidNatMulmappend x y) (monoidNatMulmappend x z) timed out
 monoidNatMulmappendadd
   (monoidNatMulmappend y x) (monoidNatMulmappend x z) =
   monoidNatMulmappend x (monoidNatMulmappendadd y z)
@@ -153,13 +115,16 @@ monoidNatMulmappendadd
 monoidNatMulmappendadd
   (monoidNatMulmappendadd x y) (monoidNatMulmappendadd y x) =
   monoidNatMulmappend (Succ One) (monoidNatMulmappendadd x y)
+monoidNatMulmappendadd
+  (monoidNatMulmappend x y) (monoidNatMulmappend x z) =
+  monoidNatMulmappend x (monoidNatMulmappendadd y z)
 
 == Statistics ==
-2476 events created in total (37 schemas, 442 terms, 1737 creation, 260 miscellaneous), 16 hooks.
-115 schema test cases for 29 representative schemas.
-1563 term test cases for 397 representative terms.
-8 equal schemas and 17 equal terms generated.
-55 pruning equations.
+2515 events created in total (36 schemas, 423 terms, 1784 creation, 272 miscellaneous), 16 hooks.
+85 schema test cases for 29 representative schemas.
+1881 term test cases for 394 representative terms.
+7 equal schemas and 21 equal terms generated.
+57 pruning equations.
 
 == Signature ==
                    One :: NatMul
@@ -168,25 +133,13 @@ monoidNatMulmappendadd
 monoidNatMulmappendadd :: NatMul -> NatMul -> NatMul
 
 == Laws ==
-Term monoidNatMulmappend y (monoidNatMulmappend x z) timed out
-Term monoidNatMulmappend y (monoidNatMulmappend y x) timed out
-Term monoidNatMulmappend z (monoidNatMulmappend z x) timed out
-Term monoidNatMulmappend z (monoidNatMulmappend z y) timed out
-monoidNatMulmappend (monoidNatMulmappend x y) z =
-  monoidNatMulmappend x (monoidNatMulmappend y z)
-Term monoidNatMulmappend (monoidNatMulmappend z x) y timed out
-Term monoidNatMulmappend (monoidNatMulmappend y x) x timed out
-Term monoidNatMulmappend (monoidNatMulmappend z x) x timed out
-Term monoidNatMulmappend (monoidNatMulmappend z y) y timed out
-monoidNatMulmappend x (monoidNatMulmappend y z) =
-  monoidNatMulmappend z (monoidNatMulmappend x y)
 
 == Statistics ==
-2384 events created in total (29 schemas, 403 terms, 1714 creation, 238 miscellaneous), 16 hooks.
-91 schema test cases for 29 representative schemas.
-1686 term test cases for 393 representative terms.
-0 equal schemas and 2 equal terms generated.
-58 pruning equations.
+2335 events created in total (29 schemas, 393 terms, 1687 creation, 226 miscellaneous), 16 hooks.
+85 schema test cases for 29 representative schemas.
+1492 term test cases for 393 representative terms.
+0 equal schemas and 0 equal terms generated.
+57 pruning equations.
 
 Considering:
   MonoidNatMulmappend n (MonoidNatMulmappend m o) = MonoidNatMulmappend (MonoidNatMulmappend n m) o
@@ -264,6 +217,12 @@ Considering:
   MonoidNatMulmappend n (Succ One) = (nMonoidNatMulmappend_addn)
 Proved without using induction
 Considering:
+  MonoidNatMulmappend (MonoidNatMulmappend n m) o = MonoidNatMulmappend n (MonoidNatMulmappend m o)
+Proved by induction on n, o
+Considering:
+  MonoidNatMulmappend (MonoidNatMulmappend o n) m = MonoidNatMulmappend n (MonoidNatMulmappend m o)
+Proved without using induction
+Considering:
   (nMonoidNatMulmappend_addMonoidNatMulmappend n m) = MonoidNatMulmappend n (Succ m)
 Proved without using induction
 Considering:
@@ -276,10 +235,72 @@ Considering:
   (Succ OneMonoidNatMulmappend_addSucc One) = MonoidNatMulmappend (Succ One) (Succ One)
 Proved without using induction
 Considering:
+  MonoidNatMulmappend o (MonoidNatMulmappend n m) = MonoidNatMulmappend n (MonoidNatMulmappend m o)
+Proved without using induction
+Considering:
   MonoidNatMulmappend m (nMonoidNatMulmappend_addn) = MonoidNatMulmappend n (mMonoidNatMulmappend_addm)
+Proved without using induction
+Considering:
+  (MonoidNatMulmappend m nMonoidNatMulmappend_addMonoidNatMulmappend n o) = MonoidNatMulmappend n (mMonoidNatMulmappend_addo)
 Proved by induction on n, m
 Considering:
-  MonoidNatMulmappend (Succ One) (MonoidNatMulmappend n m) = MonoidNatMulmappend n (mMonoidNatMulmappend_addm)
-Proved by induction on n, m
+  (MonoidNatMulmappend m nMonoidNatMulmappend_addMonoidNatMulmappend o n) = MonoidNatMulmappend n (mMonoidNatMulmappend_addo)
+Proved without using induction
 Considering:
-  (MonoidNatMulmappend n mMonoidNatMulmappend_ad
+  ((nMonoidNatMulmappend_addn)MonoidNatMulmappend_add(mMonoidNatMulmappend_addm)) = MonoidNatMulmappend (Succ One) (nMonoidNatMulmappend_addm)
+Proved without using induction
+Considering:
+  ((nMonoidNatMulmappend_addm)MonoidNatMulmappend_add(nMonoidNatMulmappend_addm)) = MonoidNatMulmappend (Succ One) (nMonoidNatMulmappend_addm)
+Proved without using induction
+Considering:
+  ((nMonoidNatMulmappend_addm)MonoidNatMulmappend_add(mMonoidNatMulmappend_addn)) = MonoidNatMulmappend (Succ One) (nMonoidNatMulmappend_addm)
+Proved without using induction
+Considering:
+  (MonoidNatMulmappend n mMonoidNatMulmappend_addMonoidNatMulmappend n o) = MonoidNatMulmappend n (mMonoidNatMulmappend_addo)
+Proved without using induction
+Reconsidering conjectures...
+Considering:
+  MonoidNatMulmappend n (MonoidNatMulmappend m o) = MonoidNatMulmappend (MonoidNatMulmappend n m) o
+Proved without using induction
+Finished!
+
+Summary:
+ 0: MonoidNatMulmappend One n = n           
+ 1: MonoidNatMulmappend n One = n           
+ 2: (nMonoidNatMulmappend_addOne) = Succ n  
+ 3: (OneMonoidNatMulmappend_addn) = Succ n  
+ 4: (mMonoidNatMulmappend_addn) = (nMonoidNatMulmappend_addm)
+ 5: (Succ nMonoidNatMulmappend_addm) = (nMonoidNatMulmappend_addSucc m)
+ 6: Succ (nMonoidNatMulmappend_addm) = (nMonoidNatMulmappend_addSucc m)
+ 7: Succ (mMonoidNatMulmappend_addn) = (nMonoidNatMulmappend_addSucc m)
+ 8: (nMonoidNatMulmappend_addSucc One) = Succ (Succ n)
+ 9: (mMonoidNatMulmappend_addSucc n) = (nMonoidNatMulmappend_addSucc m)
+10: ((nMonoidNatMulmappend_addm)MonoidNatMulmappend_addo) = (nMonoidNatMulmappend_add(mMonoidNatMulmappend_addo))
+11: ((mMonoidNatMulmappend_addn)MonoidNatMulmappend_addo) = (nMonoidNatMulmappend_add(mMonoidNatMulmappend_addo))
+12: ((oMonoidNatMulmappend_addn)MonoidNatMulmappend_addm) = (nMonoidNatMulmappend_add(mMonoidNatMulmappend_addo))
+13: ((mMonoidNatMulmappend_addn)MonoidNatMulmappend_addn) = (nMonoidNatMulmappend_add(nMonoidNatMulmappend_addm))
+14: ((mMonoidNatMulmappend_addn)MonoidNatMulmappend_addm) = (nMonoidNatMulmappend_add(mMonoidNatMulmappend_addm))
+15: ((nMonoidNatMulmappend_addm)MonoidNatMulmappend_addn) = (nMonoidNatMulmappend_add(nMonoidNatMulmappend_addm))
+16: ((nMonoidNatMulmappend_addm)MonoidNatMulmappend_addm) = (nMonoidNatMulmappend_add(mMonoidNatMulmappend_addm))
+17: (mMonoidNatMulmappend_add(nMonoidNatMulmappend_addo)) = (nMonoidNatMulmappend_add(mMonoidNatMulmappend_addo))
+18: (mMonoidNatMulmappend_addSucc (Succ n)) = (nMonoidNatMulmappend_addSucc (Succ m))
+19: (nMonoidNatMulmappend_addSucc (Succ One)) = Succ (Succ (Succ n))
+20: MonoidNatMulmappend n One = n           
+21: MonoidNatMulmappend One n = n           
+22: MonoidNatMulmappend m n = MonoidNatMulmappend n m
+23: MonoidNatMulmappend n (Succ One) = (nMonoidNatMulmappend_addn)
+24: MonoidNatMulmappend (MonoidNatMulmappend n m) o = MonoidNatMulmappend n (MonoidNatMulmappend m o)
+25: MonoidNatMulmappend (MonoidNatMulmappend o n) m = MonoidNatMulmappend n (MonoidNatMulmappend m o)
+26: (nMonoidNatMulmappend_addMonoidNatMulmappend n m) = MonoidNatMulmappend n (Succ m)
+27: (nMonoidNatMulmappend_addMonoidNatMulmappend m n) = MonoidNatMulmappend n (Succ m)
+28: MonoidNatMulmappend (Succ n) (Succ One) = (nMonoidNatMulmappend_addSucc (Succ n))
+29: (Succ OneMonoidNatMulmappend_addSucc One) = MonoidNatMulmappend (Succ One) (Succ One)
+30: MonoidNatMulmappend o (MonoidNatMulmappend n m) = MonoidNatMulmappend n (MonoidNatMulmappend m o)
+31: MonoidNatMulmappend m (nMonoidNatMulmappend_addn) = MonoidNatMulmappend n (mMonoidNatMulmappend_addm)
+32: (MonoidNatMulmappend m nMonoidNatMulmappend_addMonoidNatMulmappend n o) = MonoidNatMulmappend n (mMonoidNatMulmappend_addo)
+33: (MonoidNatMulmappend m nMonoidNatMulmappend_addMonoidNatMulmappend o n) = MonoidNatMulmappend n (mMonoidNatMulmappend_addo)
+34: ((nMonoidNatMulmappend_addn)MonoidNatMulmappend_add(mMonoidNatMulmappend_addm)) = MonoidNatMulmappend (Succ One) (nMonoidNatMulmappend_addm)
+35: ((nMonoidNatMulmappend_addm)MonoidNatMulmappend_add(nMonoidNatMulmappend_addm)) = MonoidNatMulmappend (Succ One) (nMonoidNatMulmappend_addm)
+36: ((nMonoidNatMulmappend_addm)MonoidNatMulmappend_add(mMonoidNatMulmappend_addn)) = MonoidNatMulmappend (Succ One) (nMonoidNatMulmappend_addm)
+37: (MonoidNatMulmappend n mMonoidNatMulmappend_addMonoidNatMulmappend n o) = MonoidNatMulmappend n (mMonoidNatMulmappend_addo)
+38: MonoidNatMulmappend n (MonoidNatMulmappend m o) = MonoidNatMulmappend (MonoidNatMulmappend n m) o

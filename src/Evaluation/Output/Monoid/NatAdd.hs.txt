@@ -55,8 +55,8 @@ monoidNatAddmappend x (Succ (Succ y)) =
 
 == Statistics ==
 318 events created in total (18 schemas, 55 terms, 166 creation, 79 miscellaneous), 16 hooks.
-49 schema test cases for 13 representative schemas.
-75 term test cases for 28 representative terms.
+37 schema test cases for 13 representative schemas.
+72 term test cases for 28 representative terms.
 5 equal schemas and 27 equal terms generated.
 31 pruning equations.
 
@@ -103,4 +103,47 @@ Considering:
   MonoidNatAddmappend (MonoidNatAddmappend o n) m = MonoidNatAddmappend n (MonoidNatAddmappend m o)
 Proved without using induction
 Considering:
-  MonoidNatAddmappend (MonoidNatAddmappend m n) n = MonoidNatAddmappe
+  MonoidNatAddmappend (MonoidNatAddmappend m n) n = MonoidNatAddmappend n (MonoidNatAddmappend n m)
+Proved without using induction
+Considering:
+  MonoidNatAddmappend (MonoidNatAddmappend m n) m = MonoidNatAddmappend n (MonoidNatAddmappend m m)
+Proved without using induction
+Considering:
+  MonoidNatAddmappend (MonoidNatAddmappend n m) n = MonoidNatAddmappend n (MonoidNatAddmappend n m)
+Proved without using induction
+Considering:
+  MonoidNatAddmappend (MonoidNatAddmappend n m) m = MonoidNatAddmappend n (MonoidNatAddmappend m m)
+Proved without using induction
+Considering:
+  MonoidNatAddmappend (Succ n) (Succ Zero) = Succ (Succ n)
+Proved without using induction
+Considering:
+  MonoidNatAddmappend m (MonoidNatAddmappend n o) = MonoidNatAddmappend n (MonoidNatAddmappend m o)
+Proved without using induction
+Considering:
+  MonoidNatAddmappend m (Succ (Succ n)) = MonoidNatAddmappend n (Succ (Succ m))
+Proved without using induction
+Finished!
+
+Summary:
+ 0: MonoidNatAddmappend n (MonoidNatAddmappend m o) = MonoidNatAddmappend (MonoidNatAddmappend n m) o
+ 1: MonoidNatAddmappend Zero n = n          
+ 2: MonoidNatAddmappend n Zero = n          
+ 3: MonoidNatAddmappend n Zero = n          
+ 4: MonoidNatAddmappend Zero n = n          
+ 5: MonoidNatAddmappend m n = MonoidNatAddmappend n m
+ 6: MonoidNatAddmappend (Succ n) m = MonoidNatAddmappend n (Succ m)
+ 7: Succ (MonoidNatAddmappend n m) = MonoidNatAddmappend n (Succ m)
+ 8: Succ (MonoidNatAddmappend m n) = MonoidNatAddmappend n (Succ m)
+ 9: MonoidNatAddmappend n (Succ Zero) = Succ n
+10: MonoidNatAddmappend m (Succ n) = MonoidNatAddmappend n (Succ m)
+11: MonoidNatAddmappend (MonoidNatAddmappend n m) o = MonoidNatAddmappend n (MonoidNatAddmappend m o)
+12: MonoidNatAddmappend (MonoidNatAddmappend m n) o = MonoidNatAddmappend n (MonoidNatAddmappend m o)
+13: MonoidNatAddmappend (MonoidNatAddmappend o n) m = MonoidNatAddmappend n (MonoidNatAddmappend m o)
+14: MonoidNatAddmappend (MonoidNatAddmappend m n) n = MonoidNatAddmappend n (MonoidNatAddmappend n m)
+15: MonoidNatAddmappend (MonoidNatAddmappend m n) m = MonoidNatAddmappend n (MonoidNatAddmappend m m)
+16: MonoidNatAddmappend (MonoidNatAddmappend n m) n = MonoidNatAddmappend n (MonoidNatAddmappend n m)
+17: MonoidNatAddmappend (MonoidNatAddmappend n m) m = MonoidNatAddmappend n (MonoidNatAddmappend m m)
+18: MonoidNatAddmappend (Succ n) (Succ Zero) = Succ (Succ n)
+19: MonoidNatAddmappend m (MonoidNatAddmappend n o) = MonoidNatAddmappend n (MonoidNatAddmappend m o)
+20: MonoidNatAddmappend m (Succ (Succ n)) = MonoidNatAddmappend n (Succ (Succ m))

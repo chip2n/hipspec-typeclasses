@@ -6,7 +6,7 @@ Empty :: List a
 
 == Statistics ==
 66 events created in total (7 schemas, 13 terms, 33 creation, 13 miscellaneous), 16 hooks.
-31 schema test cases for 7 representative schemas.
+25 schema test cases for 7 representative schemas.
 21 term test cases for 13 representative terms.
 0 equal schemas and 0 equal terms generated.
 11 pruning equations.
@@ -25,8 +25,8 @@ monoidListmappend (monoidListmappend x y) z =
 
 == Statistics ==
 310 events created in total (22 schemas, 63 terms, 184 creation, 41 miscellaneous), 17 hooks.
-86 schema test cases for 18 representative schemas.
-214 term test cases for 59 representative terms.
+69 schema test cases for 18 representative schemas.
+212 term test cases for 59 representative terms.
 4 equal schemas and 4 equal terms generated.
 30 pruning equations.
 

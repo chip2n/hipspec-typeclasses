@@ -1,0 +1,15 @@
+== Signature ==
+
+
+== Laws ==
+
+== Statistics ==
+7 events created in total (1 schemas, 1 terms, 3 creation, 2 miscellaneous), 12 hooks.
+1 schema test cases for 1 representative schemas.
+1 term test cases for 1 representative terms.
+0 equal schemas and 0 equal terms generated.
+0 pruning equations.
+
+Finished!
+
+Summary:

@@ -1,9 +1,8 @@
 #!/bin/sh
 
-for folder in */
-do
+function testFolder {
   TOTAL=0.0
-  for file in $folder*.hs
+  for file in $@/*.hs
   do
     printf "## $file ##\n"
 
@@ -31,6 +30,19 @@ do
   echo "=================="
   echo "Total time: $TOTAL"
   echo "=================="
-done
+}
+
+if [ "$#" -eq 0 ]
+then
+  for folder in */
+  do
+    testFolder $folder
+  done
+else
+  for arg
+  do
+    testFolder $arg
+  done
+fi
 
 rm output.tmp

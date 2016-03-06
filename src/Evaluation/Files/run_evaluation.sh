@@ -3,16 +3,21 @@
 for folder in */
 do
   TOTAL=0.0
-  for file in $folder/*.hs
+  for file in $folder*.hs
   do
     printf "## $file ##\n"
 
     TIMEFORMAT=%R
-    TIMETAKEN=$(time (emna -p=z -v=2 --law-dir ../../../../tools/tip-haskell-frontend/src/Tip/Law $file 2>&1 | sed -e ':loop' -e 's/[^]//g' -e 't loop'> ../Output/$file.txt)  2>&1)
+    # TIMETAKEN=$(time (emna -p=z -v=2 --law-dir ../../../../tools/tip-haskell-frontend/src/Tip/Law $file 2>&1 | sed -e ':loop' -e 's/[^]//g' -e 't loop'> ../Output/$file.txt)  2>&1)
+    TIMETAKEN=$(time (emna -p=z -v=2 --law-dir ../../../../tools/tip-haskell-frontend/src/Tip/Law $file > output.tmp 2>&1 ) 2>&1)
 
-    FINISHED=$(grep "Finished" ../Output/$file.txt)
+    ERRORCODE=$?
 
-    if [ "$FINISHED" == "" ]
+    cat output.tmp | sed -e ':loop' -e 's/[^]//g' -e 't loop'> ../Output/$file.txt
+
+    # FINISHED=$(grep "Finished" ../Output/$file.txt)
+
+    if [ "$ERRORCODE" -ne "0" ]
     then
       printf '\033[0;31m'
     fi
@@ -27,3 +32,5 @@ do
   echo "Total time: $TOTAL"
   echo "=================="
 done
+
+rm output.tmp

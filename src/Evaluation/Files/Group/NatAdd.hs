@@ -2,12 +2,12 @@ module NatAdd where
 
 import Tip
 
-data NatAdd = Zero | Succ Nat
+data Nat = Zero | Succ Nat
 
 class Group a where
   op :: a -> a -> a
 
-instance Group NatAdd where
+instance Group Nat where
   Zero `op` a = a
   (Succ a) `op` b = Succ (a `op` b)
 

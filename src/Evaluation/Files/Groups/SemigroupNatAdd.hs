@@ -1,10 +1,11 @@
 module SemigroupNatAdd where
 
 import Tip
-import GroupLike
-import NatAdd
+import Nat
+import Semigroup
 
-instance Semigroup Nat
+instance Semigroup Nat where
+    op = natAdd
 
 lawSemigroupAssoc :: Semigroup a => a -> a -> a -> Equality a
 lawSemigroupAssoc a b c = (a `op` b) `op` c === a `op` (b `op` c)

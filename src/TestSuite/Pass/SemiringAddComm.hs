@@ -7,8 +7,6 @@ class Semiring a where
   mul :: a -> a -> a
 
 data Nat = Zero | Succ Nat
-  deriving Eq
-  -- deriving (Eq, Show)
 
 instance Semiring Nat where
   add n Zero = n

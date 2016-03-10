@@ -49,19 +49,22 @@ cabal-version:       >=1.10
 library
   -- Modules exported by the library.
   exposed-modules:
-      Example.Eq
-      Example.Ord
-      Law.Functor
-      Law.Applicative
-      Law.MonadTransformer
-      Law.Eq
-      Law.Integral
-      Law.Ix
-      Law.Monad
-      Law.Num
-      Law.Ord
-      Law.ReadShow
-      Law.Show
+      Evaluation.Nat
+      Evaluation.Example.Group.Semigroup
+      Evaluation.Example.Group.SemigroupNatAdd
+      --Example.Eq
+      --Example.Ord
+      --Law.Functor
+      --Law.Applicative
+      --Law.MonadTransformer
+      --Law.Eq
+      --Law.Integral
+      --Law.Ix
+      --Law.Monad
+      --Law.Num
+      --Law.Ord
+      --Law.ReadShow
+      --Law.Show
 
   
   -- Modules included in this library but not exported.

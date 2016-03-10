@@ -1,5 +1,6 @@
 module Law.Lattice where
 
+import Tip
 import Lattice
 
 latticeCommAnd :: Lattice a => a -> a -> Equality a
@@ -25,3 +26,4 @@ latticeIdemAnd a = a |.| a === a
 
 latticeIdemOr :: Lattice a => a -> Equality a
 latticeIdemOr a = a &.& a === a
+

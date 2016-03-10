@@ -1,15 +1,13 @@
 (declare-datatypes (a) ((Maybe (Just (Just0 a)) (Nothing))))
 (declare-sort Eq 0)
-(declare-fun
-  Eqfunc
-    (Eq Eq) Bool)
+(declare-const Eqfunc (=> Eq (=> Eq Bool)))
 (define-fun
   EqMaybefunc
      ((x (Maybe Eq)) (y (Maybe Eq))) Bool
      (match x
        (case (Just c)
          (match y
-           (case (Just b2) (Eqfunc c b2))
+           (case (Just b2) (@ (@ Eqfunc c) b2))
            (case Nothing false)))
        (case Nothing
          (match y
@@ -22,10 +20,10 @@
 (assert-not
   (forall ((a (Maybe Eq)) (b (Maybe Eq)) (c (Maybe Eq)))
     (=> (and (EqMaybefunc a b) (EqMaybefunc b c)) (EqMaybefunc a c))))
-(assert (forall ((b Eq)) (Eqfunc b b)))
+(assert (forall ((b Eq)) (@ (@ Eqfunc b) b)))
 (assert
-  (forall ((a (Eq)) (b (Eq))) (=> (Eqfunc a b) (Eqfunc b a))))
+  (forall ((a (Eq)) (b (Eq))) (=> (@ (@ Eqfunc a) b) (@ (@ Eqfunc b) a))))
 (assert
   (forall ((a (Eq)) (b (Eq)) (c (Eq)))
-    (=> (and (Eqfunc a b) (Eqfunc b c)) (Eqfunc a c))))
+    (=> (and (@ (@ Eqfunc a) b) (@ (@ Eqfunc b) c)) (@ (@ Eqfunc a) c))))
 (check-sat)

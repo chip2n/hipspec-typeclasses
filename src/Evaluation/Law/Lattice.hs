@@ -26,4 +26,3 @@ latticeIdemAnd a = a |.| a === a
 
 latticeIdemOr :: Lattice a => a -> Equality a
 latticeIdemOr a = a &.& a === a
-

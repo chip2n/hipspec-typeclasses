@@ -1,7 +1,0 @@
-emna: emna: panic! (the 'impossible' happened)
-  (GHC version 7.10.3 for x86_64-unknown-linux):
-	splitTyConApp
-<<details unavailable>>
-
-Please report this as a GHC bug:  http://www.haskell.org/ghc/reportabug
-

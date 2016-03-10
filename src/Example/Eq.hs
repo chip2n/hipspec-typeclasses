@@ -1,14 +1,13 @@
-{-# LANGUAGE TypeOperators #-}
-
 module Example.Eq where
 
 import Tip
 
-data Test = Low | Middle | High
+data Test = Foo | Bar
 
 instance Eq Test where
-    Low    == Low    = True
-    Middle == Middle = True
-    High   == High   = True
-    _      == _      = False
+    Foo == Foo = True
+    Bar == Bar = True
+    _   == _   = False
 
+reflexivityLaw :: Eq a => a -> Equality Bool 
+reflexivityLaw a = bool (a == a)

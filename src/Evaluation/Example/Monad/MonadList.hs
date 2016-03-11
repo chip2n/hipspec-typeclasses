@@ -1,6 +1,6 @@
 module Evaluation.Examples.Monad.List where
 
-import Evaluation.List
+import Evaluation.Data
 import Evaluation.Monad
 import Prelude hiding (Monad(..))
 

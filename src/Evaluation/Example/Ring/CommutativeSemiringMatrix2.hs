@@ -1,7 +1,7 @@
 module Evaluation.Example.Ring.CommutativeSemiringMatrix2 where
 
 import Tip
-import Evaluation.Matrix2
+import Evaluation.Data
 import Evaluation.Semiring
 import Evaluation.CommutativeSemiring
 import Evaluation.Example.Ring.SemiringMatrix2

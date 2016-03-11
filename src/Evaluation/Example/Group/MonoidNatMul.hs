@@ -1,9 +1,10 @@
 module Evaluation.Example.Group.MonoidNatMul where
 
 import Tip
-import Evaluation.Nat
+import Evaluation.Data
 import Evaluation.Semigroup
 import Evaluation.Monoid
+import Evaluation.Example.Ring.SemiringNat
 import Prelude hiding (Monoid(..))
 
 instance Semigroup Nat where

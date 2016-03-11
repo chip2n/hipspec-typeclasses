@@ -1,6 +1,6 @@
 module Evaluation.Example.Group.SemigroupList where
 
-import Evaluation.List
+import Evaluation.Data
 import Evaluation.Semigroup
 
 instance Semigroup (List a) where

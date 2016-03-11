@@ -1,7 +1,7 @@
 module Evaluation.Example.Functor.FunctorList where
 
+import Evaluation.Data
 import Evaluation.Functor
-import Evaluation.List
 import Prelude hiding (Functor(..))
 
 instance Functor List where

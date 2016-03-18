@@ -5,8 +5,8 @@ lawDir=$scriptDir/../tools/tip-haskell-frontend/src/Tip/Law
 evalDir=$scriptDir/src/Evaluation/Example
 
 function runEmna() {
-    #emna -p=z -v=2 --law-dir $lawDir "$@"
-    emna -p=z -v=2 "$@"
+    emna -p=z -v=2 --law-dir $lawDir "$@"
+    #emna -p=z -v=2 "$@"
 }
 
 function testFolder {

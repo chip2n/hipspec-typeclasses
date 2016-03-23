@@ -8,3 +8,6 @@ data Matrix2 a = Matrix2 a a a a
 
 -- Linked list
 data List a = Empty | Cons a (List a)
+
+-- Binary tree
+data Tree a = Leaf a | Branch (Tree a) (Tree a)

@@ -1,14 +1,8 @@
 module Semiring where
 
 import Tip
-
-data Nat = Zero | Succ Nat
-
-class Semiring a where
-  add :: a -> a -> a
-  mul :: a -> a -> a
-  zero :: a
-  one :: a
+import Evaluation.Data
+import Evaluation.Semiring
 
 instance Semiring Nat where
   zero = Zero

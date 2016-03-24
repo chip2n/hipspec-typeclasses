@@ -1,14 +1,18 @@
 module Evaluation.Example.Ord.OrdTree where
 
+import Prelude hiding (max)
 import Evaluation.Data
 import Evaluation.Example.Eq.EqTree
+import Evaluation.Example.Ord.OrdNat
 
-instance Ord a => Ord (Tree a) where
---    Leaf _         <= Leaf _         = True
---    (Branch x1 x2) <= (Branch y1 y2) = max (
---    _ <= _ = False
+instance Eq a => Ord (Tree a) where
     t1 <= t2 = treeHeight t1 <= treeHeight t2
 
-treeHeight :: Tree a -> Int
-treeHeight (Leaf _) = 0
-treeHeight (Branch t1 t2) = max (treeHeight t1) (treeHeight t2) + 1
+treeHeight :: Tree a -> Nat
+treeHeight (Leaf _) = Zero
+treeHeight (Branch t1 t2) = Succ (max (treeHeight t1) (treeHeight t2))
+
+max :: Nat -> Nat -> Nat
+max a Zero = a
+max Zero a = a
+max (Succ a) (Succ b) = Succ (max a b)

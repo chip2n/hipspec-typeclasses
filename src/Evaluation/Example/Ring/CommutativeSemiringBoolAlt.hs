@@ -1,4 +1,4 @@
-module Evaluation.Example.Ring.CommutativeSemiringBool where
+module Evaluation.Example.Ring.CommutativeSemiringBoolAlt where
 
 import Tip
 import Evaluation.CommutativeSemiring

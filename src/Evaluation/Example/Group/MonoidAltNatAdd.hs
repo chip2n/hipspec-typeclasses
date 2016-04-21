@@ -1,4 +1,4 @@
-module Evaluation.Example.Group.MonoidNatAdd where
+module Evaluation.Example.Group.MonoidAltNatAdd where
 
 import Tip
 import Evaluation.Data

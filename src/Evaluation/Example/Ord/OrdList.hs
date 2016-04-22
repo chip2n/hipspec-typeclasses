@@ -8,5 +8,4 @@ instance Ord a => Ord (List a) where
     (Cons a as) <= Empty       = False
     (Cons a as) <= (Cons b bs)
         | a == b    = as <= bs
-        | a < b     = True
-        | otherwise = False
+        | otherwise = a < b

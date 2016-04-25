@@ -1,0 +1,121 @@
+Conjecture
+  a < b ∧ b < c → a < c
+
+Functions
+  a < b = (compare a b) == LT
+
+  compare a b = if (a == b) then
+                  EQ
+                else
+                  if (a <= b) then
+                    LT
+                  else
+                    GT
+
+  []     <= _      = True
+  (x:xs) <= []     = False
+  (x:xs) <= (y:ys) = if (x == y) then
+                       xs <= ys
+                     else
+                       x <= y
+
+
+Axioms (on inner type)
+  O1. a <= b ∧ b <= c → a <= c
+  O2. a <= b ∧ b <= a → a == b
+  O3. a <= b ∨ b <= a
+
+  E1. a == a
+  E2. a == b → b == a
+  E3. a == b ∧ b == c → a == c
+
+
+-----
+Proof
+-----
+
+a < b ∧ b < c → a < c
+
+  Definition of <
+
+(compare a b) == LT ∧ (compare b c) == LT → (compare a c) == LT
+
+  Assume premise (i.e. a <= b ∧ b <= c)
+
+a <= b ∧ ¬(a == b) ∧ b <= c ∧ ¬(b == c) → a <= c ∧ ¬(a == c)
+
+---------
+Induction
+---------
+
+Base case: a = []
+
+
+Conjecture
+  [] <= b ∧ ¬([] == b) ∧ b <= c ∧ ¬(b == c) → [] <= c ∧ ¬([] == c)
+
+Premises
+  P1. [] <= b
+  P2. b <= c
+  P3. ¬([] == b)
+  P4. ¬(b == c)
+
+To prove
+  C1. [] <= c
+      1. True: by definition of <=
+
+  C2. ¬([] == c)
+      1. P3 gives b := (b':bs)
+      2. P2 ∧ 1 gives c := (c':cs)
+      3. True: ¬([] == (c':cs))
+
+
+Step case: a = (a':as)
+
+
+Conjecture
+  (a':as) <= b ∧ ¬((a':as) == b) ∧ b <= c ∧ ¬(b == c) → (a':as) <= c ∧ ¬((a':as) == c)
+
+Induction hypothesis
+  I1. as <= b ∧ ¬(as == b) ∧ b <= c ∧ ¬(b == c) → as <= c ∧ ¬(as == c)
+
+Premises
+  P1. (a':as) <= b
+  P2. b <= c
+  P3. ¬((a':as) == b)
+  P4. ¬(b == c)
+
+To prove
+  C1. (a':as) <= c
+      1. P1 gives b := (b':bs)
+      2. P2 ∧ 1 gives c := (c':cs)
+      3. C1 ∧ 2 ⇔ (a' <= c') ∨ (a' == c' ∧ as <= cs)
+      4. P1 ∧ 1 gives (a' <= b') ∨ (a' == b' ∧ as <= bs)
+      5. P2 ∧ 1 ∧ 2 gives (b' <= c') ∨ (b' == c' ∧ bs <= cs)
+      6. 4 ∧ 5 → 3 gives ((a' <= b') ∨ (a' == b' ∧ as <= bs)) ∧ ((b' <= c') ∨ (b' == c' ∧ bs <= cs)) → (a' <= c') ∨ (a' == c' ∧ as <= cs)
+      7. Case split on 6
+        7a. (a' <= b') ∧ (b' <= c') → (a' <= c') ∨ (a' == c' ∧ as <= cs)
+          7a1. (a' <= b') ∧ (b' <= c') → (a' <= c') by O1
+        7b. (a' <= b') ∧ (b' == c' ∧ bs <= cs) → (a' <= c') ∨ (a' == c' ∧ as <= cs)
+          7b1. 7b gives (a' <= b) ∧ (b' == c') → (a' == c')
+        7c. (a' == b' ∧ as <= bs) ∧ (b' <= c') → (a' <= c') ∨ (a' == c' ∧ as <= cs)
+          7c1. 7c gives (a' == b') ∧ (b' <= c') → (a' <= c')
+        7d. a' == b' ∧ as <= bs ∧ b' == c' ∧ bs <= cs → (a' <= c') ∨ (a' == c' ∧ as <= cs)
+          7d1. (a' == b') ∧ (b' == c') → (a' == c') by E3
+          7d2. 7d gives as <= cs by I1
+          7d3. 7d1 ∧ 7d2 gives (a' == c') ∧ (as <= cs)
+      8. True
+
+
+  C2. ¬((a':as) == c)
+      1. P1 gives b := (b':bs)
+      2. P2 ∧ 1 gives c := (c':cs)
+      3. C2 ⇔ ¬((a':as) == (c':cs)) ⇔ ¬(a' == c') ∨ ¬(as == cs)
+      4. P3 ∧ 1 gives ¬(a' == b') ∨ ¬(as == bs)
+      5. P4 ∧ 1 ∧ 2 gives ¬(b' == c') ∨ ¬(bs == cs)
+      6. 4 ∧ 5 → 3 gives (¬(a' == b') ∨ ¬(as == bs)) ∧ (¬(b' == c') ∨ ¬(bs == cs)) → ¬(a' == c') ∨ ¬(as == cs)
+      7. Case split on 6.
+        7a. ¬(a' == b') ∧ ¬(b' == c') → ¬(a' == c') ∨ ¬(as == cs)
+          7a1. 7a ∧ P1 gives as <= bs
+          7a2. 7a ∧ P2 gives bs <= cs
+

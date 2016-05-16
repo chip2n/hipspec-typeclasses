@@ -11,8 +11,8 @@ instance Semiring a => Semigroup (Matrix2 a) where
 
 -- 2x2 Matrix multiplication
 matrix2Mul :: Semiring a => Matrix2 a -> Matrix2 a -> Matrix2 a
-matrix2Mul (Matrix2 a1 a2 a3 a4) (Matrix2 b1 b2 b3 b4) =
-    Matrix2 (add (mul a1 b1) (mul a2 b3))
-            (add (mul a1 b2) (mul a2 b4))
-            (add (mul a3 b1) (mul a4 b3))
-            (add (mul a3 b2) (mul a4 b4))
+matrix2Mul (Matrix2 a11 a12 a21 a22) (Matrix2 b11 b12 b21 b22) =
+    Matrix2 (add (mul a11 b11) (mul a12 b21))
+            (add (mul a11 b12) (mul a12 b22))
+            (add (mul a21 b11) (mul a22 b21))
+            (add (mul a21 b12) (mul a22 b22))

@@ -7,4 +7,4 @@ import Evaluation.Example.Group.SemigroupMatrix2
 import Prelude hiding (Monoid(..))
 
 instance Semiring a => Monoid (Matrix2 a) where
-    identity = Matrix2 one zero one zero
+    identity = Matrix2 one zero zero one
